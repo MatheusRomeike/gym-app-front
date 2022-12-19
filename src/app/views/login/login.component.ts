@@ -26,12 +26,13 @@ export class LoginComponent {
     });
   }
 
-  submitLogin() {
+  submitLoginForm() {
     var dadosLogin = this.loginForm.getRawValue() as LoginModel;
-
-    this.loginService.logar(dadosLogin).subscribe((data) => {
-      this.token = data.data;
-      this.router.navigate(['/teste']);
-    });
+    if (this.loginForm.valid) {
+      this.loginService.logar(dadosLogin).subscribe((data) => {
+        this.token = data.data;
+        this.router.navigate(['/teste']);
+      });
+    }
   }
 }
