@@ -32,18 +32,17 @@ export class LoginComponent {
 
   submitLoginForm() {
     var dadosLogin = this.loginForm.getRawValue() as LoginModel;
-    console.log(this.loginForm.valid);
     if (this.loginForm.valid) {
-      this.loginService.logar(dadosLogin).subscribe(
-        (data) => {
-          this.authenticatorService.definirToken(data.data);
+      this.loginService.logar(dadosLogin).subscribe({
+        next: (n) => {
+          this.authenticatorService.definirToken(n.data);
           this.alertService.success('Entrou com sucesso.');
           this.router.navigate(['/logged']);
         },
-        (error) => {
-          this.alertService.error('Usuário não encontrado.');
-        }
-      );
+        error: (e) => {
+          this.alertService.error(e.error.data);
+        },
+      });
     }
   }
 }

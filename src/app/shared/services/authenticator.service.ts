@@ -4,8 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthenticatorService {
-  private autenticado: boolean = false;
-
   public definirToken(token: string) {
     sessionStorage.setItem('token', token);
   }

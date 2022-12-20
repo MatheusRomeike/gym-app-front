@@ -35,6 +35,10 @@ section{
     width: 15%;
 }
 
+section:hover{
+  box-shadow: 6px 6px 6px 0px rgba(0,0,0,0.75);
+}
+
 .message{
   background: $light;
   box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.31);
