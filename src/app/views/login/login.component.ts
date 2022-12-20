@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/shared/components/modal/alert.service';
+import { AuthenticatorService } from 'src/app/shared/services/authenticator.service';
 import { LoginModel } from './shared/models/LoginModel';
 import { LoginService } from './shared/services/login.service';
 
@@ -16,7 +18,9 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    public loginService: LoginService
+    public loginService: LoginService,
+    private authenticatorService: AuthenticatorService,
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -28,11 +32,18 @@ export class LoginComponent {
 
   submitLoginForm() {
     var dadosLogin = this.loginForm.getRawValue() as LoginModel;
+    console.log(this.loginForm.valid);
     if (this.loginForm.valid) {
-      this.loginService.logar(dadosLogin).subscribe((data) => {
-        this.token = data.data;
-        this.router.navigate(['/teste']);
-      });
+      this.loginService.logar(dadosLogin).subscribe(
+        (data) => {
+          this.authenticatorService.definirToken(data.data);
+          this.alertService.success('Entrou com sucesso.');
+          this.router.navigate(['/logged']);
+        },
+        (error) => {
+          this.alertService.error('Usuário não encontrado.');
+        }
+      );
     }
   }
 }

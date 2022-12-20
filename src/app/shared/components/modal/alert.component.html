@@ -1,0 +1,8 @@
+<section ngClass="message {{this.alertService.class$ | async}}" *ngIf="this.alertService.displaying$ | async">
+  <header></header>
+  <i></i>
+  <h2>
+    <span>{{this.alertService.class$ | async}}</span> 
+    {{this.alertService.message$ | async}}
+  </h2>
+</section> 
