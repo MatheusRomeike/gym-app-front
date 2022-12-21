@@ -36,7 +36,7 @@ export class LoginComponent {
       this.loginService.logar(dadosLogin).subscribe({
         next: (n) => {
           this.authenticatorService.definirToken(n.data);
-          this.alertService.success('Entrou com sucesso.');
+          this.alertService.success('Entrou.');
           this.router.navigate(['/logged']);
         },
         error: (e) => {
