@@ -42,13 +42,9 @@ export class Interceptor implements HttpInterceptor {
     }
 
     var request = req.clone({ headers });
-    this.loadingService.show();
     return next.handle(request).pipe(
       map((event) => {
         return event;
-      }),
-      finalize(() => {
-        this.loadingService.hide();
       })
     );
   }
