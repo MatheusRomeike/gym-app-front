@@ -14,6 +14,7 @@ import { LoggedComponent } from './views/logged/logged.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { AlertComponent } from './shared/components/modal/alert.component';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 const authenticatorService = [Interceptor];
 
@@ -38,6 +39,7 @@ const authenticatorService = [Interceptor];
     HttpClientModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    CurrencyMaskModule,
   ],
 })
 export class AppModule {}

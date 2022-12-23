@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,8 +13,7 @@ import { LoginService } from './shared/services/login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  loginForm!: FormGroup;
-  public token: any;
+  public loginForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
