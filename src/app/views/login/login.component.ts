@@ -46,10 +46,12 @@ export class LoginComponent {
         next: (n) => {
           this.authenticatorService.definirToken(n.data);
           this.alertService.success('Entrou.');
+          this.loadingService.hide();
           this.router.navigate(['/logged']);
         },
         error: (e) => {
           this.alertService.error(e.error.data);
+          this.loadingService.hide();
         },
       });
     }

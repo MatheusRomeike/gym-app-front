@@ -1,13 +1,13 @@
 <div class="d-flex justify-content-center loginFormDiv">
-    <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()" class="loginForm d-flex justify-content-center align-items-center flex-column">
+    <form [formGroup]="loginForm" class="loginForm d-flex justify-content-center align-items-center flex-column">
 
         <p class="fs-2">Bem Vindo!</p>
 
-        <app-input-field class="mt-2 col-8" id="usuario" placeholder="Usuário" [required]="true" formControlName="usuario"></app-input-field>
+        <app-input-field class="mt-2 col-8" id="usuario" placeholder="Informe o usuário" maxLength="50" required formControlName="usuario"></app-input-field>
 
-        <app-input-field class="mt-2 col-8" id="senha" placeholder="Senha" [required]="true" formControlName="senha" type="password"></app-input-field>
+        <app-input-field class="mt-2 col-8" id="senha" placeholder="Informe a senha" maxLength="50" required formControlName="senha" type="password"></app-input-field>
 
-        <input type="submit" class="form-group mt-2 btn btn-secondary btn-lg" value="Entrar" [disabled]="!loginForm.valid">
+        <input type="button" (click)="submitLoginForm()" class="form-group mt-2 btn btn-secondary btn-lg" value="Entrar" [disabled]="!loginForm.valid">
 
     </form>
 </div>

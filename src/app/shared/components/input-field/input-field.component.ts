@@ -1,5 +1,9 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormGroup,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -13,18 +17,25 @@ const INPUT_FIELD_VALUE_ACESSOR: any = {
   styleUrls: ['./input-field.component.css'],
   providers: [INPUT_FIELD_VALUE_ACESSOR],
 })
-export class InputFieldComponent implements ControlValueAccessor {
+export class InputFieldComponent implements ControlValueAccessor, OnInit {
   @Input() id!: string;
   @Input() label?: string;
   @Input() type = 'text';
-  @Input() required = false;
+  @Input() required: any;
   @Input() isReadOnly = false;
   @Input() isDisabled = false;
   @Input() placeholder?: string;
+  @Input() maxLength = '';
+  @Input() mask?: string;
 
   public touched = false;
+  public localForm!: FormGroup;
 
   private innerValue: any;
+
+  ngOnInit() {
+    this.required = this.required !== undefined ? true : false;
+  }
 
   get value() {
     return this.innerValue;

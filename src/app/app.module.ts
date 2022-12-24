@@ -5,6 +5,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {
+  NgxMaskDirective,
+  NgxMaskPipe,
+  provideNgxMask,
+  IConfig,
+} from 'ngx-mask';
 
 import { Interceptor } from './shared/interceptor/interceptor';
 
@@ -14,10 +20,10 @@ import { LoggedComponent } from './views/logged/logged.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { AlertComponent } from './shared/components/modal/alert.component';
-import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { InputFieldComponent } from './shared/components/input-field/input-field.component';
 
 const authenticatorService = [Interceptor];
+export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
@@ -32,6 +38,7 @@ const authenticatorService = [Interceptor];
   providers: [
     authenticatorService,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    provideNgxMask(),
   ],
   bootstrap: [AppComponent],
   imports: [
@@ -42,7 +49,8 @@ const authenticatorService = [Interceptor];
     HttpClientModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    CurrencyMaskModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
 })
 export class AppModule {}
