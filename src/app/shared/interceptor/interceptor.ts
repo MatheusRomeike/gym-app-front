@@ -45,6 +45,9 @@ export class Interceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       map((event) => {
         return event;
+      }),
+      finalize(() => {
+        this.loadingService.hide();
       })
     );
   }
