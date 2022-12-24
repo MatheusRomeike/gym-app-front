@@ -6,7 +6,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { LoadingService } from '../components/loading/loading.service';
 import { AuthenticatorService } from '../services/authenticator.service';
 
@@ -45,9 +45,6 @@ export class Interceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       map((event) => {
         return event;
-      }),
-      finalize(() => {
-        this.loadingService.hide();
       })
     );
   }
