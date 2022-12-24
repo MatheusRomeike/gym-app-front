@@ -1,0 +1,14 @@
+<div class="form-group">
+  <label [attr.for]="id" class="control-label"> {{ label }} </label>
+
+  <input [type]="type" 
+         class="form-control" 
+         [id]="id" 
+         [readOnly]="!!isReadOnly"
+         [(ngModel)]="value"
+         (mousedown)="touched = true"
+         [disabled]="isDisabled"
+         [placeholder]="placeholder">
+
+  <div *ngIf="required && (value === null || value === undefined || value === '') && touched" style="color: red">Campo obrigatório*</div>
+</div>

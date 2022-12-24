@@ -1,6 +1,6 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +15,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { AlertComponent } from './shared/components/modal/alert.component';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { InputFieldComponent } from './shared/components/input-field/input-field.component';
 
 const authenticatorService = [Interceptor];
 
@@ -26,6 +27,7 @@ const authenticatorService = [Interceptor];
     NavbarComponent,
     LoadingComponent,
     AlertComponent,
+    InputFieldComponent,
   ],
   providers: [
     authenticatorService,
@@ -36,6 +38,7 @@ const authenticatorService = [Interceptor];
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,

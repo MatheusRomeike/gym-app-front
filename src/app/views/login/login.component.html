@@ -3,19 +3,11 @@
 
         <p class="fs-2">Bem Vindo!</p>
 
-        <div class="form-group mt-3 col-9">
-            <input type="text" class="form-control" formControlName="usuario" placeholder="Usuário*">
-            <div *ngIf="loginForm.get('usuario')?.touched && !loginForm.get('usuario')?.valid" style="color: red;">Campo obrigatório</div>
-        </div>
+        <app-input-field class="mt-2 col-8" id="usuario" placeholder="Usuário" [required]="true" formControlName="usuario"></app-input-field>
 
-        <div class="form-group mt-3 col-9">
-            <input type="password" class="form-control" formControlName="senha" placeholder="Senha*">
-            <div *ngIf="loginForm.get('senha')?.touched && !loginForm.get('senha')?.valid" style="color: red">Campo obrigatório</div>
-        </div>
+        <app-input-field class="mt-2 col-8" id="senha" placeholder="Senha" [required]="true" formControlName="senha" type="password"></app-input-field>
 
-        <div class="form-group mt-3">
-            <input type="submit" class="btn btn-secondary btn-lg" value="Entrar" [disabled]="!loginForm.valid">
-        </div>
+        <input type="submit" class="form-group mt-2 btn btn-secondary btn-lg" value="Entrar" [disabled]="!loginForm.valid">
 
     </form>
 </div>

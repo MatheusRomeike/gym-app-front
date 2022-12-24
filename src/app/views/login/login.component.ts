@@ -15,6 +15,7 @@ import { LoginService } from './shared/services/login.service';
 })
 export class LoginComponent {
   public loginForm!: FormGroup;
+  public testeForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +30,10 @@ export class LoginComponent {
     this.loginForm = this.formBuilder.group({
       usuario: ['', [Validators.required, Validators.maxLength(50)]],
       senha: ['', [Validators.required, Validators.maxLength(50)]],
+    });
+
+    this.testeForm = this.formBuilder.group({
+      teste: ['', [Validators.required]],
     });
   }
 
@@ -45,9 +50,6 @@ export class LoginComponent {
         },
         error: (e) => {
           this.alertService.error(e.error.data);
-        },
-        complete: () => {
-          this.loadingService.hide();
         },
       });
     }
