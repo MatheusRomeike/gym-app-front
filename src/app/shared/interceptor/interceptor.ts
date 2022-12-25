@@ -44,7 +44,9 @@ export class Interceptor implements HttpInterceptor {
         return event;
       }),
       catchError((error: HttpErrorResponse) => {
-        this.authenticatorService.limparToken();
+        if (error.status == 401) {
+          this.authenticatorService.limparToken();
+        }
         return throwError(() => new Error(error.message));
       })
     );
