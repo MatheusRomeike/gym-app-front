@@ -5,4 +5,5 @@ export const ResourceBase = {
 export const ResourceLogin = {
   AdicionarLogin: '/api/Login/AdicionarLogin',
   Logar: '/api/Login/Logar',
+  VerificarToken: '/api/Login/VerificarToken',
 };

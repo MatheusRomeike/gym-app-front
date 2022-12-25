@@ -9,10 +9,14 @@ export class AuthenticatorService {
   }
 
   public obterToken() {
-    sessionStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 
   public limparToken() {
     sessionStorage.removeItem('token');
+  }
+
+  public logado(): boolean {
+    return this.obterToken() != null;
   }
 }

@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoadingService } from 'src/app/shared/components/loading/loading.service';
@@ -19,7 +19,6 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
     public loginService: LoginService,
     private authenticatorService: AuthenticatorService,
     private alertService: AlertService,
@@ -39,15 +38,17 @@ export class LoginComponent {
 
   submitLoginForm() {
     var dadosLogin = this.loginForm.getRawValue() as LoginModel;
-
     if (this.loginForm.valid) {
       this.loadingService.show();
       this.loginService.logar(dadosLogin).subscribe({
         next: (n) => {
+          sessionStorage.setItem(
+            'usuario',
+            this.loginForm.get('usuario')?.value
+          );
           this.authenticatorService.definirToken(n.data);
-          this.alertService.success('Entrou.');
+          this.alertService.success('Login realizado!');
           this.loadingService.hide();
-          this.router.navigate(['/logged']);
         },
         error: (e) => {
           this.alertService.error(e.error.data);
@@ -55,5 +56,13 @@ export class LoginComponent {
         },
       });
     }
+  }
+
+  teste() {
+    this.loginService.VerificarToken().subscribe({
+      next: (n) => {
+        console.log(n);
+      },
+    });
   }
 }

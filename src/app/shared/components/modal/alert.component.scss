@@ -30,9 +30,10 @@ body {
 
 section{
     position: fixed;
-    top: 4%;
+    top: 5%;
     left: 84%;
     width: 15%;
+    z-index: 9998;
 }
 
 section:hover{

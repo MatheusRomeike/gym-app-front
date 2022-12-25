@@ -5,22 +5,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import {
   NgxMaskDirective,
   NgxMaskPipe,
   provideNgxMask,
   IConfig,
 } from 'ngx-mask';
-
 import { Interceptor } from './shared/interceptor/interceptor';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login.component';
-import { LoggedComponent } from './views/logged/logged.component';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { AlertComponent } from './shared/components/modal/alert.component';
 import { InputFieldComponent } from './shared/components/input-field/input-field.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { SideNavComponent } from './shared/components/side-nav/side-nav.component';
 
 const authenticatorService = [Interceptor];
 export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
@@ -29,11 +30,11 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
   declarations: [
     AppComponent,
     LoginComponent,
-    LoggedComponent,
-    NavbarComponent,
     LoadingComponent,
     AlertComponent,
     InputFieldComponent,
+    HeaderComponent,
+    SideNavComponent,
   ],
   providers: [
     authenticatorService,
@@ -51,6 +52,7 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     MatProgressSpinnerModule,
     NgxMaskDirective,
     NgxMaskPipe,
+    FontAwesomeModule,
   ],
 })
 export class AppModule {}

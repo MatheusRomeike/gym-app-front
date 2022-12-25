@@ -1,11 +1,12 @@
 .loginFormDiv {
-    height: 60%;
+    height: 100vh;
+    width: 100vw;
 }
 
 .loginForm {
-    margin-top: 10%;
     box-shadow: 0 30px 60px 0 gray;
-    width: 33%;
+    width: 40%;
+    height: 50%;
 }
 
 .loginForm:hover {

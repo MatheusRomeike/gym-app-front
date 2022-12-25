@@ -23,7 +23,6 @@ export class InputFieldComponent implements ControlValueAccessor, OnInit {
   @Input() type = 'text';
   @Input() required: any;
   @Input() isReadOnly = false;
-  @Input() isDisabled = false;
   @Input() placeholder?: string;
   @Input() maxLength = '';
   @Input() mask?: string;

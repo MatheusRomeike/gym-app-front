@@ -1,4 +1,5 @@
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpHeaders,
@@ -6,18 +7,14 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { LoadingService } from '../components/loading/loading.service';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { AuthenticatorService } from '../services/authenticator.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Interceptor implements HttpInterceptor {
-  constructor(
-    private authenticatorService: AuthenticatorService,
-    private loadingService: LoadingService
-  ) {}
+  constructor(private authenticatorService: AuthenticatorService) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -37,7 +34,7 @@ export class Interceptor implements HttpInterceptor {
         .append('Content-type', 'application/json')
         .append(
           'Authorization',
-          `Bearer ${this.authenticatorService.obterToken}`
+          `Bearer ${this.authenticatorService.obterToken()}`
         );
     }
 
@@ -45,6 +42,10 @@ export class Interceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       map((event) => {
         return event;
+      }),
+      catchError((error: HttpErrorResponse) => {
+        this.authenticatorService.limparToken();
+        return throwError(() => new Error(error.message));
       })
     );
   }

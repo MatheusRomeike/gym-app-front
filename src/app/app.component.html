@@ -1,3 +1,20 @@
-<router-outlet></router-outlet>
+<div class="container-fluid g-0" *ngIf="logado()">
+    <app-header (sideNavToggled)="sideNavStatus = $event"></app-header>
+
+    <main>
+        <app-side-nav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-side-nav>
+
+        <div class="display-area" [ngClass]="{'display-area-shrink': sideNavStatus}">
+            <div class="conteudo"><router-outlet></router-outlet></div>
+        </div>
+        
+    </main>
+    
+</div>
+
+<div *ngIf="!logado()">
+    <app-login></app-login>
+</div>    
+
 <app-loading></app-loading>
 <app-alert></app-alert>
