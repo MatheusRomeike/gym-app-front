@@ -22,6 +22,7 @@ import { AlertComponent } from './shared/components/modal/alert.component';
 import { InputFieldComponent } from './shared/components/input-field/input-field.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { SideNavComponent } from './shared/components/side-nav/side-nav.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const authenticatorService = [Interceptor];
 export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
@@ -53,6 +54,7 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     NgxMaskDirective,
     NgxMaskPipe,
     FontAwesomeModule,
+    MatExpansionModule,
   ],
 })
 export class AppModule {}

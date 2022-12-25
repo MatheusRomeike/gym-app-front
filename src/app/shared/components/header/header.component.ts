@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { AuthenticatorService } from '../../services/authenticator.service';
@@ -11,8 +11,7 @@ import { AlertService } from '../modal/alert.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() sideNavToggled = new EventEmitter<boolean>();
-
-  private menuStatus: boolean = false;
+  @Input() menuStatus!: boolean;
 
   public faBars = faBars;
   public usuario!: string;
@@ -24,7 +23,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.usuario = sessionStorage.getItem('usuario') || '';
-    console.log(this.usuario);
   }
 
   sideNavToggle() {

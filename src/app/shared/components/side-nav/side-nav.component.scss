@@ -1,9 +1,22 @@
 .side-nav-content {
     color: white;
-    width: 230px;
-    margin-left: 10px;
+    width: 350px;
     margin-top: 10px;
-    margin-right: 10px;
+}
+
+.nav-list-open .nav-list-item:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+}
+
+.header-icon{
+    font-size: 25px;
+    margin-left: 17px;
+    margin-right: 17px;
+}
+
+.category-icon {
+    margin-right: 17px;
 }
 
 .nav-list {
@@ -13,33 +26,6 @@
     margin-bottom: 0%;
 }
 
-.nav-list-item {
-    display: flex;
-    align-items: center;
-    height: 50px;
-}
-
-.nav-list-open .nav-list-item:hover {
+.clickavel:hover {
     background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 16px;
-}
-
-.nav-list-item fa-icon {
-    font-size: 20px;
-    height: 25px;
-    width: 25px;
-    margin-right: 15px;
-    margin-left: 10px;
-    text-align: center;
-    line-height: 25px;
-}
-
-.nav-list-item span {
-    width: 170px;
-    text-transform: capitalize;
-}
-
-a {
-    text-decoration: none;
-    color: white;
 }
