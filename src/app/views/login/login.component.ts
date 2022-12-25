@@ -57,12 +57,4 @@ export class LoginComponent {
       });
     }
   }
-
-  teste() {
-    this.loginService.VerificarToken().subscribe({
-      next: (n) => {
-        console.log(n);
-      },
-    });
-  }
 }

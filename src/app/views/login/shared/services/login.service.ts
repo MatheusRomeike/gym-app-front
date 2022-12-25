@@ -15,11 +15,4 @@ export class LoginService {
       `${ResourceBase.Base}${ResourceLogin.VerificarToken}`
     );
   }
-
-  public logar(obj: LoginModel) {
-    return this.httpClient.post<any>(
-      `${ResourceBase.Base}${ResourceLogin.Logar}`,
-      obj
-    );
-  }
 }
