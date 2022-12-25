@@ -4,7 +4,7 @@
     <main>
         <app-side-nav (sideNavToggled)="sideNavStatus = $event" [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-side-nav>
 
-        <div class="display-area" [ngClass]="{'display-area-shrink': sideNavStatus}">
+        <div class="display-area" (click)="sideNavStatus = false" [ngClass]="{'display-area-shrink': sideNavStatus}">
             <div class="conteudo"><router-outlet></router-outlet></div>
         </div>
         
