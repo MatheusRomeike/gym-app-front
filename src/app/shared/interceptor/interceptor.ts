@@ -47,7 +47,6 @@ export class Interceptor implements HttpInterceptor {
         if (error.status == 401) {
           this.authenticatorService.limparToken();
         }
-        console.log(error.error.data);
         return throwError(() => error);
       })
     );

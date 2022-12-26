@@ -1,5 +1,6 @@
-<section ngClass="message {{this.alertService.class$ | async}}" *ngIf="this.alertService.displaying$ | async">
+<section ngClass="message {{this.alertService.class$ | async}}" *ngIf="this.alertService.displaying$ | async" (click)="alertService.fecharModal()">
   <header></header>
+  <mat-progress-bar [value]="value"></mat-progress-bar>
   <i></i>
   <h2>
     <span>{{this.alertService.class$ | async}}</span> 

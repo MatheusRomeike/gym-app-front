@@ -13,45 +13,38 @@ export class AlertService {
   public class$: Observable<string> = this.alertClass.asObservable();
   public message$: Observable<string> = this.alertMessage.asObservable();
 
-  success(message: string): void {
-    if (this.alertSubject.value == false) {
-      this.alertClass.next('Sucesso');
-      this.activeModal(message);
-    }
+  success(message: string) {
+    this.alertClass.next('Sucesso');
+    this.activeModal(message);
   }
 
-  alert(message: string): void {
-    if (this.alertSubject.value == false) {
-      this.alertClass.next('Alerta');
-      this.activeModal(message);
-    }
+  alert(message: string) {
+    this.alertClass.next('Alerta');
+    this.activeModal(message);
   }
 
-  error(message: string): void {
-    if (this.alertSubject.value == false) {
-      this.alertClass.next('Erro');
-      this.activeModal(message);
-    }
+  error(message: string) {
+    this.alertClass.next('Erro');
+    this.activeModal(message);
   }
 
-  neutral(message: string): void {
-    if (this.alertSubject.value == false) {
-      this.alertClass.next('Neutro');
-      this.activeModal(message);
-    }
+  neutral(message: string) {
+    this.alertClass.next('Neutro');
+    this.activeModal(message);
   }
 
-  shit(message: string): void {
-    if (this.alertSubject.value == false) {
-      this.alertClass.next('Neutro');
-      this.activeModal(message);
-    }
+  shit(message: string) {
+    this.alertClass.next('Neutro');
+    this.activeModal(message);
   }
 
-  private async activeModal(message: string): Promise<void> {
+  fecharModal() {
+    this.alertSubject.next(false);
+  }
+
+  private activeModal(message: string) {
+    this.alertSubject.next(false);
     this.alertSubject.next(true);
     this.alertMessage.next(message);
-    await new Promise((f) => setTimeout(f, 3000));
-    this.alertSubject.next(false);
   }
 }
