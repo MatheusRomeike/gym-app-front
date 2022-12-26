@@ -1,4 +1,4 @@
-<div class="container-fluid g-0" *ngIf="logado()">
+<div class="container-fluid g-0" *ngIf="authenticatorService.logado$ | async">
     <app-header [menuStatus]="sideNavStatus" (sideNavToggled)="sideNavStatus = $event"></app-header>
 
     <main>
@@ -12,7 +12,7 @@
     
 </div>
 
-<div class="naoLogado" *ngIf="!logado()">
+<div class="naoLogado" *ngIf="!(authenticatorService.logado$ | async)">
     <app-login></app-login>
 </div>    
 

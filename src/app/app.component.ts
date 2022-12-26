@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthenticatorService } from './shared/services/authenticator.service';
 
 @Component({
@@ -6,13 +6,21 @@ import { AuthenticatorService } from './shared/services/authenticator.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public title = 'Base_Front';
   public sideNavStatus: boolean = false;
 
-  constructor(private authenticatorService: AuthenticatorService) {}
+  constructor(public authenticatorService: AuthenticatorService) {}
 
-  public logado(): boolean {
-    return this.authenticatorService.logado();
+  ngOnInit() {
+    this.estaLogado();
+  }
+
+  estaLogado() {
+    this.authenticatorService.estaLogado().subscribe((x) => {
+      if (x) {
+        this.authenticatorService.logou();
+      }
+    });
   }
 }

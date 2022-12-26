@@ -33,6 +33,6 @@ export class HeaderComponent implements OnInit {
   sair() {
     this.alertService.success('Logout realizado!');
     this.authenticatorService.limparToken();
-    sessionStorage.removeItem('usuario');
+    this.authenticatorService.deslogou();
   }
 }

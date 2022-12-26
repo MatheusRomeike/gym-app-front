@@ -1,7 +1,5 @@
-import { CurrencyPipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { LoadingService } from 'src/app/shared/components/loading/loading.service';
 import { AlertService } from 'src/app/shared/components/modal/alert.service';
 import { AuthenticatorService } from 'src/app/shared/services/authenticator.service';
@@ -49,6 +47,7 @@ export class LoginComponent {
           this.authenticatorService.definirToken(n.data);
           this.alertService.success('Login realizado!');
           this.loadingService.hide();
+          this.authenticatorService.logou();
         },
         error: (e) => {
           this.alertService.error(e.error.data);

@@ -23,13 +23,13 @@ export class Interceptor implements HttpInterceptor {
     var headers;
 
     if (req.body instanceof FormData) {
-      headers: new HttpHeaders({
+      headers = new HttpHeaders({
         contentType: 'false',
         processData: 'false',
         Authorization: `Bearer ${this.authenticatorService.obterToken()}`,
       });
     } else {
-      headers: new HttpHeaders()
+      headers = new HttpHeaders()
         .append('accept', 'application/json')
         .append('Content-type', 'application/json')
         .append(
@@ -37,7 +37,6 @@ export class Interceptor implements HttpInterceptor {
           `Bearer ${this.authenticatorService.obterToken()}`
         );
     }
-
     var request = req.clone({ headers });
     return next.handle(request).pipe(
       map((event) => {
@@ -45,6 +44,7 @@ export class Interceptor implements HttpInterceptor {
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status == 401) {
+          this.authenticatorService.deslogou();
           this.authenticatorService.limparToken();
         }
         return throwError(() => error);
