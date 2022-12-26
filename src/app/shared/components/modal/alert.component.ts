@@ -17,7 +17,6 @@ export class AlertComponent implements OnInit {
     this.alertService.displaying$.subscribe((displaying) => {
       if (displaying) {
         this.value = 100;
-        console.log(this.value);
         this.intervalId = setInterval(() => {
           this.value = (this.value - 2.5) % 100;
           if (this.value < -5) {
