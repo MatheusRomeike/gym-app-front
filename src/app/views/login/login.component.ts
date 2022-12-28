@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { LoadingService } from 'src/app/shared/components/loading/loading.service';
 import { AlertService } from 'src/app/shared/components/modal/alert.service';
 import { AuthenticatorService } from 'src/app/shared/services/authenticator.service';
@@ -14,6 +19,7 @@ import { LoginService } from './shared/services/login.service';
 export class LoginComponent {
   public loginForm!: FormGroup;
   public testeForm!: FormGroup;
+  public lista!: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +38,31 @@ export class LoginComponent {
     this.testeForm = this.formBuilder.group({
       teste: ['', [Validators.required]],
     });
+
+    this.lista = [
+      {
+        placeholder: 'Informe o usuário',
+        maxLength: 50,
+        required: true,
+        formControlName: 'usuario',
+        type: 'text',
+        control: new FormControl('', [
+          Validators.required,
+          Validators.maxLength(50),
+        ]),
+      },
+      {
+        placeholder: 'Informe a senha',
+        maxLength: 50,
+        required: true,
+        formControlName: 'senha',
+        type: 'password',
+        control: new FormControl('', [
+          Validators.required,
+          Validators.maxLength(50),
+        ]),
+      },
+    ];
   }
 
   submitLoginForm() {

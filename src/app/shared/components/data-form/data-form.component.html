@@ -1,0 +1,10 @@
+<form [formGroup]="form">
+  <app-input-field *ngFor="let field of fields"
+        class="mt-2 col-8"
+        [placeholder]="field.placeholder"
+        [maxLength]="field.maxLength"
+        required
+        [formControlName]="field.formControlName"
+        [type]="field.type"
+  ></app-input-field>
+</form>

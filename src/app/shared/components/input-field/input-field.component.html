@@ -10,7 +10,7 @@
          [placeholder]="placeholder"
          [mask]="mask">
     
-    <div class="float-start" *ngIf="required && value.length == 0 && touched" style="color: red">Campo obrigatório*</div>
+    <div class="float-start" *ngIf="required && touched" style="color: red">Campo obrigatório*</div>
 
     <div class="float-end" *ngIf="maxLength != ''">{{value?.length}} /  {{maxLength}}</div> 
 </div>
