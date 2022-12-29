@@ -1,16 +1,16 @@
 <div class="form-group">
-  <label [attr.for]="id" class="control-label"> {{ label }} </label>
+  <label [attr.for]="formControlName" class="control-label"> {{ label }} </label>
 
   <input [type]="type" 
          class="form-control" 
-         [id]="id" 
+         [id]="formControlName" 
          [readOnly]="!!isReadOnly"
          [(ngModel)]="value"
-         (mousedown)="touched = true"
          [placeholder]="placeholder"
-         [mask]="mask">
+         [mask]="mask"
+         (click)="form.controls[formControlName].markAsTouched()">
     
-    <div class="float-start" *ngIf="required && touched" style="color: red">Campo obrigatório*</div>
+    <div class="float-start" *ngIf="form.controls[formControlName].status == 'INVALID' && form.controls[formControlName].touched == true" style="color: red">Campo obrigatório*</div>
 
-    <div class="float-end" *ngIf="maxLength != ''">{{value?.length}} /  {{maxLength}}</div> 
+    <div class="float-end" *ngIf="maxLength">{{value?.length}} /  {{maxLength}}</div> 
 </div>

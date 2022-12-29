@@ -1,10 +1,5 @@
-import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { DataFormComponent } from 'src/app/shared/components/data-form/data-form.component';
 import { LoadingService } from 'src/app/shared/components/loading/loading.service';
 import { AlertService } from 'src/app/shared/components/modal/alert.service';
 import { AuthenticatorService } from 'src/app/shared/services/authenticator.service';
@@ -17,28 +12,18 @@ import { LoginService } from './shared/services/login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  public loginForm!: FormGroup;
-  public testeForm!: FormGroup;
+  @ViewChild('dynamicForm') dynamicForm!: DataFormComponent;
+
   public lista!: any;
 
   constructor(
-    private formBuilder: FormBuilder,
     public loginService: LoginService,
     private authenticatorService: AuthenticatorService,
     private alertService: AlertService,
     private loadingService: LoadingService
   ) {}
 
-  ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      usuario: ['', [Validators.required, Validators.maxLength(50)]],
-      senha: ['', [Validators.required, Validators.maxLength(50)]],
-    });
-
-    this.testeForm = this.formBuilder.group({
-      teste: ['', [Validators.required]],
-    });
-
+  ngOnInit() {
     this.lista = [
       {
         placeholder: 'Informe o usuário',
@@ -46,10 +31,6 @@ export class LoginComponent {
         required: true,
         formControlName: 'usuario',
         type: 'text',
-        control: new FormControl('', [
-          Validators.required,
-          Validators.maxLength(50),
-        ]),
       },
       {
         placeholder: 'Informe a senha',
@@ -57,34 +38,37 @@ export class LoginComponent {
         required: true,
         formControlName: 'senha',
         type: 'password',
-        control: new FormControl('', [
-          Validators.required,
-          Validators.maxLength(50),
-        ]),
       },
     ];
   }
 
   submitLoginForm() {
-    var dadosLogin = this.loginForm.getRawValue() as LoginModel;
-    if (this.loginForm.valid) {
-      this.loadingService.show();
-      this.loginService.logar(dadosLogin).subscribe({
-        next: (n) => {
-          sessionStorage.setItem(
-            'usuario',
-            this.loginForm.get('usuario')?.value
-          );
-          this.authenticatorService.definirToken(n.data);
-          this.alertService.success('Login realizado!');
-          this.loadingService.hide();
-          this.authenticatorService.logou();
-        },
-        error: (e) => {
-          this.alertService.error(e.error.data);
-          this.loadingService.hide();
-        },
-      });
+    if (!this.dynamicForm.form.valid) {
+      this.alertService.error('Preencha todos os campos obrigatórios!');
+      return;
     }
+
+    var usuario = this.dynamicForm.form.get('usuario')!.value;
+    var senha = this.dynamicForm.form.get('senha')!.value;
+
+    var dadosLogin = new LoginModel(usuario, senha);
+    this.logar(dadosLogin);
+  }
+
+  logar(dadosLogin: LoginModel) {
+    this.loadingService.show();
+    this.loginService.logar(dadosLogin).subscribe({
+      next: (n) => {
+        sessionStorage.setItem('usuario', dadosLogin.Usuario);
+        this.authenticatorService.definirToken(n.data);
+        this.alertService.success('Login realizado!');
+        this.loadingService.hide();
+        this.authenticatorService.logou();
+      },
+      error: (e) => {
+        this.alertService.error(e.error.data);
+        this.loadingService.hide();
+      },
+    });
   }
 }

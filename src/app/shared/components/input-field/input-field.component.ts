@@ -1,8 +1,11 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
   ControlValueAccessor,
+  FormBuilder,
+  FormControl,
   FormGroup,
   NG_VALUE_ACCESSOR,
+  Validators,
 } from '@angular/forms';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
@@ -18,23 +21,20 @@ const INPUT_FIELD_VALUE_ACESSOR: any = {
   providers: [INPUT_FIELD_VALUE_ACESSOR],
 })
 export class InputFieldComponent implements ControlValueAccessor, OnInit {
-  @Input() id!: string;
   @Input() label?: string;
   @Input() type = 'text';
-  @Input() required: any;
   @Input() isReadOnly = false;
   @Input() placeholder?: string;
-  @Input() maxLength = '';
   @Input() mask?: string;
-
-  public touched = false;
-  public localForm!: FormGroup;
+  @Input() formControlName = '';
+  @Input() form!: FormGroup;
+  @Input() maxLength?: number;
 
   private innerValue: any;
 
-  ngOnInit() {
-    this.required = this.required !== undefined ? true : false;
-  }
+  constructor() {}
+
+  ngOnInit() {}
 
   get value() {
     return this.innerValue;

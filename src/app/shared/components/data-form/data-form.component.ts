@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-data-form',
@@ -13,9 +13,17 @@ export class DataFormComponent implements OnInit {
 
   ngOnInit() {
     this.fields.forEach((f: any) => {
-      console.log(f.formControlName);
-      this.form.addControl(f.formControlName, f.control);
+      var control = new FormControl('');
+
+      f.required !== undefined
+        ? control.addValidators([Validators.required])
+        : null;
+
+      f.maxLength
+        ? control.addValidators([Validators.maxLength(f.maxLength)])
+        : null;
+
+      this.form.addControl(f.formControlName, control);
     });
-    console.log(this.form);
   }
 }

@@ -1,35 +1,9 @@
 <div class="d-flex justify-content-center align-items-center loginFormDiv">
-  <form
-    [formGroup]="loginForm"
-    class="loginForm d-flex justify-content-center align-items-center flex-column"
-  >
+  <div class="loginForm d-flex justify-content-center align-items-center flex-column">
     <p class="fs-2">Bem Vindo!</p>
 
-    <app-input-field
-      class="mt-2 col-8"
-      placeholder="Informe o usuário"
-      maxLength="50"
-      required
-      formControlName="usuario"
-    ></app-input-field>
+    <app-data-form class="col-9" #dynamicForm [fields]="lista"></app-data-form>
 
-    <app-input-field
-      class="mt-2 col-8"
-      placeholder="Informe a senha"
-      maxLength="50"
-      required
-      formControlName="senha"
-      type="password"
-    ></app-input-field>
-
-    <input
-      type="button"
-      (click)="submitLoginForm()"
-      class="form-group mt-2 btn btn-secondary btn-lg"
-      value="Entrar"
-      [disabled]="!loginForm.valid"
-    />
-  </form>
-
-  <app-data-form [fields]="lista"></app-data-form>
+    <button type="button" (click)="submitLoginForm()" class="form-group mt-2 btn btn-secondary btn-lg">Entrar</button>
+  </div>
 </div>
