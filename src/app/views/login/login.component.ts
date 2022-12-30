@@ -31,6 +31,7 @@ export class LoginComponent {
         required: true,
         formControlName: 'usuario',
         type: 'text',
+        label: 'Usuário',
       },
       {
         placeholder: 'Informe a senha',
@@ -38,6 +39,7 @@ export class LoginComponent {
         required: true,
         formControlName: 'senha',
         type: 'password',
+        label: 'Senha',
       },
     ];
   }
