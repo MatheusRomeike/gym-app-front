@@ -49,7 +49,7 @@ export class InputFieldComponent implements ControlValueAccessor, OnInit {
       this.options = this.autoCompleteService.call(this.option);
       this.form
         .get(this.formControlName)
-        ?.valueChanges.pipe(debounceTime(100))
+        ?.valueChanges.pipe(debounceTime(200))
         .subscribe((response) => {
           if (response && response.length) {
             this.filterData(response);
