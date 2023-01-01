@@ -25,6 +25,10 @@ export class DataFormComponent implements OnInit {
         : null;
 
       this.form.addControl(f.formControlName, control);
+
+      if (f.optionId != null && f.option != null) {
+        this.form.addControl(f.optionId, new FormControl(''));
+      }
     });
 
     this.form.statusChanges.subscribe((status) => {

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { DataFormComponent } from 'src/app/shared/components/data-form/data-form.component';
 import { LoadingService } from 'src/app/shared/components/loading/loading.service';
 import { AlertService } from 'src/app/shared/components/modal/alert.service';
+import { AutoComplete } from 'src/app/shared/Enums/auto-complete.enum';
 import { AuthenticatorService } from 'src/app/shared/services/authenticator.service';
 import { LoginModel } from './shared/models/LoginModel';
 import { LoginService } from './shared/services/login.service';
@@ -24,6 +25,8 @@ export class LoginComponent {
       formControlName: 'usuario',
       type: 'text',
       label: 'Usuário',
+      optionId: 'usuarioId',
+      option: AutoComplete.Itens,
     },
     {
       placeholder: 'Informe a senha',
