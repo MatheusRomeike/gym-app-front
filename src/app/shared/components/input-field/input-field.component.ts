@@ -36,7 +36,7 @@ export class InputFieldComponent implements ControlValueAccessor, OnInit {
   @Input() optionId: any = null;
   @Input() option: any = null;
 
-  public filteredOptions: any = null;
+  public filteredOptions: any = [];
   public activeAutoComplete = false;
 
   private innerValue: any;
@@ -62,6 +62,14 @@ export class InputFieldComponent implements ControlValueAccessor, OnInit {
 
   closeAutoComplete() {
     setTimeout(() => (this.activeAutoComplete = false), 100);
+    if (
+      this.form.get(this.formControlName)?.value ==
+      this?.filteredOptions[0]?.name
+    ) {
+      this.bindAutoComplete(this.filteredOptions[0]);
+    } else {
+      this.form.get(this.optionId)?.setValue(null);
+    }
   }
 
   bindAutoComplete(a: any) {

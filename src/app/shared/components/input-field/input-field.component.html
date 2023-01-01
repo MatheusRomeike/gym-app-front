@@ -13,7 +13,7 @@
     [formControlName]="formControlName"
     [autocomplete]="!activeAutoComplete? 'on': 'off' ">
 
-  <div *ngIf="activeAutoComplete && filteredOptions?.length" class="autoComplete">
+  <div *ngIf="activeAutoComplete && filteredOptions?.length && this.form.get(formControlName)?.value != filteredOptions[0].name" class="autoComplete">
     <div *ngFor="let item of filteredOptions" class="d-flex flex-column">
         <a class="autoCompleteItem" (click)="bindAutoComplete(item)">
           <span style="color: black;">{{this.form.get(formControlName)?.value}}</span>{{item.name.replace(this.form.get(formControlName)?.value, '')}}
