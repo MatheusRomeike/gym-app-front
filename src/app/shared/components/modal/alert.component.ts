@@ -30,4 +30,26 @@ export class AlertComponent implements OnInit {
       }
     });
   }
+
+  onHover() {
+    clearInterval(this.intervalId);
+    this.value = 100;
+  }
+
+  onMouseOut() {
+    if (this.alertService.displaying$) {
+      this.value = 100;
+      this.intervalId = setInterval(() => {
+        this.value = (this.value - 5) % 100;
+        console.log(this.value);
+        if (this.value < -10) {
+          this.value = 100;
+          clearInterval(this.intervalId);
+          this.alertService.fecharModal();
+        }
+      }, 75);
+    } else {
+      clearInterval(this.intervalId);
+    }
+  }
 }
