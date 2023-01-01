@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { DataFormComponent } from 'src/app/shared/components/data-form/data-form.component';
 import { LoadingService } from 'src/app/shared/components/loading/loading.service';
 import { AlertService } from 'src/app/shared/components/modal/alert.service';
@@ -14,7 +14,26 @@ import { LoginService } from './shared/services/login.service';
 export class LoginComponent {
   @ViewChild('dynamicForm') dynamicForm!: DataFormComponent;
 
-  public lista!: any;
+  public valid = false;
+
+  public lista = [
+    {
+      placeholder: 'Informe o usuário',
+      maxLength: 50,
+      required: true,
+      formControlName: 'usuario',
+      type: 'text',
+      label: 'Usuário',
+    },
+    {
+      placeholder: 'Informe a senha',
+      maxLength: 50,
+      required: true,
+      formControlName: 'senha',
+      type: 'password',
+      label: 'Senha',
+    },
+  ];
 
   constructor(
     public loginService: LoginService,
@@ -22,27 +41,6 @@ export class LoginComponent {
     private alertService: AlertService,
     private loadingService: LoadingService
   ) {}
-
-  ngOnInit() {
-    this.lista = [
-      {
-        placeholder: 'Informe o usuário',
-        maxLength: 50,
-        required: true,
-        formControlName: 'usuario',
-        type: 'text',
-        label: 'Usuário',
-      },
-      {
-        placeholder: 'Informe a senha',
-        maxLength: 50,
-        required: true,
-        formControlName: 'senha',
-        type: 'password',
-        label: 'Senha',
-      },
-    ];
-  }
 
   submitLoginForm() {
     if (!this.dynamicForm.form.valid) {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class DataFormComponent implements OnInit {
   @Input() fields!: any;
+  @Output() valid = new EventEmitter<boolean>();
 
   public form: FormGroup = new FormGroup({});
 
@@ -24,6 +25,10 @@ export class DataFormComponent implements OnInit {
         : null;
 
       this.form.addControl(f.formControlName, control);
+    });
+
+    this.form.statusChanges.subscribe((status) => {
+      this.valid.emit(status === 'VALID');
     });
   }
 }

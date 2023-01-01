@@ -2,8 +2,8 @@
   <div class="loginForm d-flex justify-content-center align-items-center flex-column">
     <p class="fs-2">Bem Vindo!</p>
 
-    <app-data-form class="col-9" #dynamicForm [fields]="lista"></app-data-form>
+    <app-data-form class="col-9" (valid)="valid = $event" #dynamicForm [fields]="lista"></app-data-form>
 
-    <button type="button" (click)="submitLoginForm()" class="form-group mt-2 btn btn-secondary btn-lg">Entrar</button>
+    <button type="button" (click)="submitLoginForm()" [disabled]="!valid" class="form-group mt-2 btn btn-secondary btn-lg">Entrar</button>
   </div>
 </div>
