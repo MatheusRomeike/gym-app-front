@@ -16,6 +16,12 @@ export class AutoCompleteService {
     }
   }
 
+  private filtrarItens(object: any, parameter: string) {
+    return Object.keys(object)
+      .filter((key) => key.startsWith(parameter))
+      .map((key) => ({ name: key, value: object[key] }));
+  }
+
   private autoCompleteItens(parameter: string): any {
     var options: any = {
       'item sacola': 1,
@@ -25,8 +31,6 @@ export class AutoCompleteService {
       'item mochila': 67,
     };
 
-    return Object.keys(options)
-      .filter((key, index) => key.startsWith(parameter))
-      .map((key) => ({ name: key, value: options[key] }));
+    return this.filtrarItens(options, parameter);
   }
 }
