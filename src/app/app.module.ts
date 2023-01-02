@@ -25,6 +25,7 @@ import { InputFieldComponent } from './shared/components/input-field/input-field
 import { HeaderComponent } from './shared/components/header/header.component';
 import { SideNavComponent } from './shared/components/side-nav/side-nav.component';
 import { DataFormComponent } from './shared/components/data-form/data-form.component';
+import { AutoCompleteComponent } from './shared/components/auto-complete/auto-complete.component';
 
 const authenticatorService = [Interceptor];
 export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
@@ -39,6 +40,7 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     HeaderComponent,
     SideNavComponent,
     DataFormComponent,
+    AutoCompleteComponent,
   ],
   providers: [
     authenticatorService,

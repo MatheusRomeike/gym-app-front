@@ -1,14 +1,10 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
   ControlValueAccessor,
-  FormBuilder,
-  FormControl,
   FormGroup,
   NG_VALUE_ACCESSOR,
-  Validators,
 } from '@angular/forms';
 import { debounceTime } from 'rxjs';
-import { AutoCompleteService } from '../../services/auto-complete.service';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -36,51 +32,19 @@ export class InputFieldComponent implements ControlValueAccessor, OnInit {
   @Input() optionId: any = null;
   @Input() option: any = null;
 
-  public filteredOptions: any = [];
   public activeAutoComplete = false;
+  public valorAutoComplete: any = null;
 
   private innerValue: any;
-  private options: any = null;
 
-  constructor(private autoCompleteService: AutoCompleteService) {}
+  constructor() {}
 
-  ngOnInit() {
-    if (this.option != null && this.optionId != null) {
-      this.options = this.autoCompleteService.call(this.option);
-      this.form
-        .get(this.formControlName)
-        ?.valueChanges.pipe(debounceTime(200))
-        .subscribe((response) => {
-          if (response && response.length) {
-            this.filterData(response);
-          } else {
-            this.filteredOptions = [];
-          }
-        });
-    }
-  }
-
-  closeAutoComplete() {
-    setTimeout(() => (this.activeAutoComplete = false), 100);
-    if (
-      this.form.get(this.formControlName)?.value ==
-      this?.filteredOptions[0]?.name
-    ) {
-      this.bindAutoComplete(this.filteredOptions[0]);
-    } else {
-      this.form.get(this.optionId)?.setValue(null);
-    }
-  }
+  ngOnInit() {}
 
   bindAutoComplete(a: any) {
     this.form.get(this.formControlName)?.setValue(a.name);
     this.form.get(this.optionId)?.setValue(a.value);
-  }
-
-  filterData(enteredData: any) {
-    this.filteredOptions = Object.keys(this.options)
-      .filter((key, index) => index < 6 && key.startsWith(enteredData))
-      .map((key) => ({ name: key, value: this.options[key] }));
+    this.valorAutoComplete = a.name;
   }
 
   get value() {
