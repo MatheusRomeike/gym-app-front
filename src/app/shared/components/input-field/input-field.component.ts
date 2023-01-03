@@ -1,10 +1,9 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import {
   ControlValueAccessor,
   FormGroup,
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { debounceTime } from 'rxjs';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -18,7 +17,7 @@ const INPUT_FIELD_VALUE_ACESSOR: any = {
   styleUrls: ['./input-field.component.scss'],
   providers: [INPUT_FIELD_VALUE_ACESSOR],
 })
-export class InputFieldComponent implements ControlValueAccessor, OnInit {
+export class InputFieldComponent implements ControlValueAccessor {
   @Input() label?: string;
   @Input() type = 'text';
   @Input() isReadOnly = false;
@@ -29,6 +28,7 @@ export class InputFieldComponent implements ControlValueAccessor, OnInit {
   @Input() formControlName = '';
   @Input() form!: FormGroup;
   @Input() maxLength?: number;
+  @Input() required = false;
   @Input() optionId: any = null;
   @Input() option: any = null;
 
@@ -39,7 +39,11 @@ export class InputFieldComponent implements ControlValueAccessor, OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  closeAutoComplete() {
+    setTimeout(() => {
+      this.activeAutoComplete = false;
+    }, 100);
+  }
 
   bindAutoComplete(a: any) {
     this.form.get(this.formControlName)?.setValue(a.name);

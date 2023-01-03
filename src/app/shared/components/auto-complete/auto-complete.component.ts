@@ -35,6 +35,5 @@ export class AutoCompleteComponent implements OnChanges {
       name: event.name,
       value: event.value,
     });
-    console.log(event);
   }
 }

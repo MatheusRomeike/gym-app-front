@@ -16,21 +16,55 @@ export class AutoCompleteService {
     }
   }
 
-  private filtrarItens(object: any, parameter: string) {
-    return Object.keys(object)
-      .filter((key) => key.startsWith(parameter))
-      .map((key) => ({ name: key, value: object[key] }));
-  }
-
   private autoCompleteItens(parameter: string): any {
-    var options: any = {
-      'item sacola': 1,
-      'item lapis': 2,
-      'item caderno': 3,
-      'item borracha': 4,
-      'item mochila': 67,
-    };
+    var lista: any = [
+      {
+        name: 'item sacola',
+        value: 1,
+      },
+      {
+        name: 'item lapis',
+        value: 2,
+      },
+      {
+        name: 'item borracha',
+        value: 3,
+      },
+      {
+        name: 'item apontador',
+        value: 4,
+      },
+      {
+        name: 'item soco',
+        value: 5,
+      },
+      {
+        name: 'item teste',
+        subName: 'teste',
+        value: 6,
+      },
+      {
+        name: 'item aviao',
+        subName: 'bong',
+        value: 7,
+      },
+      {
+        name: 'item liquidificador',
+        subName: 'tramontina t10',
+        value: 8,
+      },
+      {
+        name: 'item bobina',
+        subName: 'bobina de carro',
+        value: 9,
+      },
+      {
+        name: 'item turbina',
+        subName: 'turbina eolica',
+        value: 10,
+      },
+    ].filter((item) => item.name.startsWith(parameter));
 
-    return this.filtrarItens(options, parameter);
+    return lista;
   }
 }

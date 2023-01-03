@@ -1,7 +1,10 @@
 <div class="autoComplete" *ngIf="result != null && parametroBusca != '' ">
-  <div *ngFor="let item of result" class="d-flex flex-column">
-      <a class="autoCompleteItem" (click)="bindAutoComplete(item)">
+  <div *ngFor="let item of result">
+    <div class="d-flex flex-column justify-content-center autoCompleteBox" (click)="bindAutoComplete(item)">
+      <a class="autoCompleteItem">
         <span style="color: black;">{{parametroBusca}}</span>{{item.name.replace(parametroBusca, '')}}
       </a>
+      <span *ngIf="item?.subName" class="autoCompleteItemSubName"> {{item?.subName}}</span>
+    </div>
   </div>
 </div>

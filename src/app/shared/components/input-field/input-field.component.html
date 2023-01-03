@@ -1,22 +1,22 @@
 <form [formGroup]="form" class="form-group mb-4" style="position: relative; width: 100%;">
   
-  <label [attr.for]="formControlName" class="control-label"> {{ label }} </label>
+  <label [attr.for]="formControlName" class="control-label col-lg-12">{{label}}{{required ? '*': null}}</label>
 
-  <input (focus)="activeAutoComplete = true"
-    [type]="type" 
-    class="form-control" 
-    [id]="formControlName" 
-    [readOnly]="!!isReadOnly"
-    [placeholder]="placeholder"
-    [mask]="mask"
-    [thousandSeparator]="thousandSeparator"
-    [prefix]="prefix"
-    [formControlName]="formControlName"
-    [autocomplete]="option == null && activeAutoComplete? 'on' : 'off' ">
+  <input (focus)="activeAutoComplete = true" (blur)="closeAutoComplete()"
+  [type]="type" 
+  class="form-control" 
+  [id]="formControlName" 
+  [readOnly]="!!isReadOnly"
+  [placeholder]="placeholder"
+  [mask]="mask"
+  [thousandSeparator]="thousandSeparator"
+  [prefix]="prefix"
+  [formControlName]="formControlName"
+  [autocomplete]="option == null && activeAutoComplete? 'on' : 'off' ">
 
   <app-auto-complete *ngIf="option != null && activeAutoComplete && this.form.get(formControlName)?.value != valorAutoComplete" (bindAttributesForAutoComplete)="bindAutoComplete($event); activeAutoComplete = false" [parametroBusca]="form.get(formControlName)?.value" [option]="option"></app-auto-complete>
     
-    <div class="float-start" *ngIf="form.controls[formControlName].status == 'INVALID' && form.controls[formControlName].touched == true" style="color: red">Campo obrigatório*</div>
+    <div class="float-start" *ngIf="form.controls[formControlName].status == 'INVALID' && form.controls[formControlName].touched" style="color: red">Campo obrigatório</div>
 
     <div class="float-end" *ngIf="maxLength">{{form.get(formControlName)?.value.toString().length}} /  {{maxLength}}</div> 
 

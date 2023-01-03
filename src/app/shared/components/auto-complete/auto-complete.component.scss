@@ -5,21 +5,30 @@
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 6px;
+    overflow-y: scroll;
+    height: 225px;
 }
 
 .autoCompleteItem {
-    cursor: pointer;
     color: gray;
     text-decoration: none;
     transition: background-color 0.2s ease-in-out;
     width: 100%;
     font-size: 16px;
-    padding-left: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.autoCompleteItem:hover {
+.autoCompleteItemSubName {
+    color: gray;
+    font-size: 13px;
+}
+
+.autoCompleteBox {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 12px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.autoCompleteBox:hover {
     background-color: #eee;
 }
