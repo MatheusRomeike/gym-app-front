@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AutoComplete } from '../../Enums/auto-complete.enum';
+import { AutoComplete } from '../../enums/auto-complete.enum';
 
 @Injectable({
   providedIn: 'root',
