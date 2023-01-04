@@ -1,2 +1,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Poppins', sans-serif; }
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(128, 128, 128, 0.750);
+    border-radius: 12px;
+    border: 3px solid #ffffff;
+}
+
+*::-webkit-scrollbar {
+    width: 12px;
+}
