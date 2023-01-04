@@ -23,7 +23,6 @@ export class InputFieldComponent implements ControlValueAccessor {
   @Input() isReadOnly = false;
   @Input() placeholder?: string;
   @Input() mask?: string;
-  @Input() thousandSeparator?: any;
   @Input() prefix?: any;
   @Input() formControlName = '';
   @Input() form!: FormGroup;
