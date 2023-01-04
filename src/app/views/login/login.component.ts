@@ -25,7 +25,6 @@ export class LoginComponent {
       formControlName: 'usuario',
       type: 'text',
       label: 'Usuário',
-      optionId: 'usuarioId',
       option: AutoComplete.Itens,
     },
     {

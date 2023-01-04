@@ -31,9 +31,6 @@ export class AutoCompleteComponent implements OnChanges {
   }
 
   bindAutoComplete(event: any) {
-    this.bindAttributesForAutoComplete.emit({
-      name: event.name,
-      value: event.value,
-    });
+    this.bindAttributesForAutoComplete.emit(event.name);
   }
 }

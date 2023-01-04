@@ -44,12 +44,6 @@ export class InputFieldComponent implements ControlValueAccessor {
     }, 100);
   }
 
-  bindAutoComplete(a: any) {
-    this.form.get(this.formControlName)?.setValue(a.name);
-    this.form.get(this.optionId)?.setValue(a.value);
-    this.valorAutoComplete = a.name;
-  }
-
   get value() {
     return this.innerValue;
   }

@@ -13,7 +13,7 @@
   [formControlName]="formControlName"
   [autocomplete]="option == null && activeAutoComplete? 'on' : 'off' ">
 
-  <app-auto-complete *ngIf="option != null && activeAutoComplete && this.form.get(formControlName)?.value != valorAutoComplete" (bindAttributesForAutoComplete)="bindAutoComplete($event); activeAutoComplete = false" [parametroBusca]="form.get(formControlName)?.value" [option]="option"></app-auto-complete>
+  <app-auto-complete *ngIf="option != null && activeAutoComplete && this.form.get(formControlName)?.value != valorAutoComplete" (bindAttributesForAutoComplete)="this.form.get(formControlName)?.setValue($event); valorAutoComplete = $event; activeAutoComplete = false" [parametroBusca]="form.get(formControlName)?.value" [option]="option"></app-auto-complete>
     
     <div class="float-start" *ngIf="form.controls[formControlName].status == 'INVALID' && form.controls[formControlName].touched" style="color: red">Campo obrigatório</div>
 
