@@ -53,7 +53,7 @@ export class AutoCompleteService {
         name: 'item turbina',
         subName: 'turbina eolica',
       },
-    ].filter((item) => item.name.startsWith(parameter));
+    ].filter((item) => item.name.match(parameter));
 
     return lista;
   }
