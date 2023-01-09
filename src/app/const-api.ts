@@ -7,3 +7,7 @@ export const ResourceLogin = {
   Logar: '/api/Login/Logar',
   VerificarLogin: '/api/Login/VerificarLogin',
 };
+
+export const ResourceAutoComplete = {
+  Login: '/api/AutoComplete/AutoCompleteLogin',
+};

@@ -23,14 +23,15 @@ export class AutoCompleteComponent implements OnChanges {
 
   ngOnChanges() {
     if (this.parametroBusca.length > 2) {
-      this.result = this.autoCompleteService.callApi(
-        this.parametroBusca,
-        this.option
-      );
+      this.autoCompleteService
+        .callApi(this.parametroBusca, this.option)
+        .subscribe((result: any) => {
+          this.result = result.data;
+        });
     }
   }
 
   bindAutoComplete(event: any) {
-    this.bindAttributesForAutoComplete.emit(event.name);
+    this.bindAttributesForAutoComplete.emit(event.text);
   }
 }

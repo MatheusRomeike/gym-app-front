@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { AuthenticatorService } from '../../services/authenticator.service';
+import { AuthenticatorService } from '../../authenticator/authenticator.service';
 import { AlertService } from '../modal/alert.service';
 
 @Component({

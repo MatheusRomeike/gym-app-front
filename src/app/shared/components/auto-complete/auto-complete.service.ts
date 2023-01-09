@@ -1,60 +1,31 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {
+  ResourceAutoComplete,
+  ResourceBase,
+  ResourceLogin,
+} from 'src/app/const-api';
 import { AutoComplete } from '../../enums/auto-complete.enum';
+import { AutoCompleteModel } from '../../models/AutoCompleteModel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AutoCompleteService {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   public callApi(parameter: string, type: AutoComplete) {
     switch (type) {
-      case AutoComplete.Itens:
-        return this.autoCompleteItens(parameter);
+      case AutoComplete.Login:
+        return this.autoCompleteLogin(parameter);
       default:
         return;
     }
   }
 
-  private autoCompleteItens(parameter: string): any {
-    var lista: any = [
-      {
-        name: 'item sacola',
-      },
-      {
-        name: 'item lapis',
-      },
-      {
-        name: 'item borracha',
-      },
-      {
-        name: 'item apontador',
-      },
-      {
-        name: 'item soco',
-      },
-      {
-        name: 'item teste',
-        subName: 'teste',
-      },
-      {
-        name: 'item aviao',
-        subName: 'bong',
-      },
-      {
-        name: 'item liquidificador',
-        subName: 'tramontina t10',
-      },
-      {
-        name: 'item bobina',
-        subName: 'bobina de carro',
-      },
-      {
-        name: 'item turbina',
-        subName: 'turbina eolica',
-      },
-    ].filter((item) => item.name.match(parameter));
-
-    return lista;
+  private autoCompleteLogin(parameter: string): any {
+    return this.httpClient.get<AutoCompleteModel>(
+      `${ResourceBase.Base}${ResourceAutoComplete.Login}?search=${parameter}`
+    );
   }
 }

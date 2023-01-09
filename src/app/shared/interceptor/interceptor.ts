@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { AuthenticatorService } from '../services/authenticator.service';
+import { AuthenticatorService } from '../authenticator/authenticator.service';
 
 @Injectable({
   providedIn: 'root',
