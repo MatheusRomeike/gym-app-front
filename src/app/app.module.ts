@@ -22,10 +22,9 @@ import { LoginComponent } from './views/login/login.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { AlertComponent } from './shared/components/modal/alert.component';
 import { InputFieldComponent } from './shared/components/input-field/input-field.component';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { SideNavComponent } from './shared/components/side-nav/side-nav.component';
 import { DataFormComponent } from './shared/components/data-form/data-form.component';
 import { AutoCompleteComponent } from './shared/components/auto-complete/auto-complete.component';
+import { MenuComponent } from './shared/components/menu/menu.component';
 
 const authenticatorService = [Interceptor];
 export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
@@ -37,10 +36,9 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     LoadingComponent,
     AlertComponent,
     InputFieldComponent,
-    HeaderComponent,
-    SideNavComponent,
     DataFormComponent,
     AutoCompleteComponent,
+    MenuComponent,
   ],
   providers: [
     authenticatorService,
