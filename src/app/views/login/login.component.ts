@@ -26,6 +26,7 @@ export class LoginComponent {
       formControlName: 'usuario',
       type: 'text',
       label: 'Usuário',
+      class: 'col-9 mx-auto',
       option: AutoComplete.Login,
     },
     {
@@ -35,13 +36,7 @@ export class LoginComponent {
       formControlName: 'senha',
       type: 'password',
       label: 'Senha',
-    },
-    {
-      placeholder: 'Informe o salario',
-      formControlName: 'salario',
-      label: 'Salario',
-      mask: Mask.dinheiro,
-      prefix: 'R$',
+      class: 'col-9 mx-auto',
     },
   ];
 

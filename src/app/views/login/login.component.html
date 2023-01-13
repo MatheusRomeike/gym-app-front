@@ -1,9 +1,13 @@
-<div class="d-flex justify-content-center align-items-center loginFormDiv">
-  <div class="loginForm d-flex justify-content-center align-items-center flex-column">
-    <p class="fs-2">Bem Vindo!</p>
+<div class="d-flex" style="height: 100%;">
 
-    <app-data-form class="col-9" (valid)="valid = $event" #dynamicForm [fields]="lista"></app-data-form>
+  <div class="row col-5 m-auto" style="box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.75);">
 
-    <button type="button" (click)="submitLoginForm()" [disabled]="!valid" class="form-group mt-2 btn btn-secondary btn-lg">Entrar</button>
+      <h1 class="text-center mt-4" style="font-size: 32px;">Bem Vindo!</h1>
+
+      <app-data-form (valid)="valid = $event" #dynamicForm [fields]="lista"></app-data-form>
+
+      <button type="button" (click)="submitLoginForm()" [disabled]="!valid" class="btn btn-secondary col-2 mb-5 mx-auto" style="background-color: #8d448b;">Entrar</button>
+
   </div>
+
 </div>

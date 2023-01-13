@@ -1,7 +1,7 @@
-<form [formGroup]="form">
+<form [formGroup]="form" class="row my-2">
   <app-input-field
     *ngFor="let field of fields"
-    class="mt-2 col-8"
+    [ngClass]="field.class"
     [placeholder]="field.placeholder"
     [type]="field.type"
     [formControlName]="field.formControlName"

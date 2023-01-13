@@ -1,10 +1,10 @@
-<form [formGroup]="form" class="form-group mb-4" style="position: relative; width: 100%;">
+<form [formGroup]="form" class="mb-4">
   
-  <label [attr.for]="formControlName" class="control-label col-lg-12">{{label}}{{required ? '*': null}}</label>
+  <label [attr.for]="formControlName">{{label}}{{required ? '*': null}}</label>
 
   <input (focus)="activeAutoComplete = true" (blur)="closeAutoComplete()"
   [type]="type" 
-  class="form-control" 
+  class="form-control"
   [id]="formControlName" 
   [readOnly]="!!isReadOnly"
   [placeholder]="placeholder"

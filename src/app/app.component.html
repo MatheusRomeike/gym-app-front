@@ -13,7 +13,7 @@
 </div>
 
 <div class="naoLogado" *ngIf="!(authenticatorService.logado$ | async)">
-    <app-login></app-login>
+    <app-login class="naoLogado"></app-login>
 </div>    
 
 <app-loading></app-loading>
