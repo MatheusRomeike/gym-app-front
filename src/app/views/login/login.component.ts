@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { DataFormComponent } from 'src/app/shared/components/data-form/data-form.component';
 import { LoadingService } from 'src/app/shared/components/loading/loading.service';
-import { AlertService } from 'src/app/shared/components/modal/alert.service';
+import { AlertService } from 'src/app/shared/components/alert/alert.service';
 import { AutoComplete } from 'src/app/shared/enums/auto-complete.enum';
 import { AuthenticatorService } from 'src/app/shared/authenticator/authenticator.service';
 import { LoginModel } from './shared/models/LoginModel';

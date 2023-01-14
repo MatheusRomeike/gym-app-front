@@ -41,7 +41,6 @@ export class AlertComponent implements OnInit {
       this.value = 100;
       this.intervalId = setInterval(() => {
         this.value = (this.value - 5) % 100;
-        console.log(this.value);
         if (this.value < -10) {
           this.value = 100;
           clearInterval(this.intervalId);
