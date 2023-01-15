@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf=" authenticatorService.autenticado()">
   <div class="container-fluid">
 
     <div class="float-start">
@@ -14,7 +14,7 @@
       <div class="nav-item dropstart">
         <button class="btn btn-outline-light dropdown-toggle" type="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">{{usuario}}</button>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="#">Sair</a></li>
+          <li><a class="dropdown-item" (click)="deslogar()">Sair</a></li>
         </ul>
       </div>
 

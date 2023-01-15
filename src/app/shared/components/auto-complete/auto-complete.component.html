@@ -1,4 +1,4 @@
-<div class="autoComplete" *ngIf="result != null && parametroBusca != '' ">
+<div class="autoComplete" *ngIf="result && result.length > 0 && parametroBusca != '' ">
   <div *ngFor="let item of result">
     <div class="d-flex flex-column justify-content-center autoCompleteBox" (click)="bindAutoComplete(item)">
 

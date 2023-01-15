@@ -1,11 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './views/login/login.component';
+import { AuthenticatorService } from './shared/authenticator/authenticator.service';
 
-const routes: Routes = [{ path: 'login', component: LoginComponent }];
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('./views/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./views/login/login.module').then((m) => m.LoginModule),
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  constructor() {}
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { AuthenticatorService } from '../../authenticator/authenticator.service';
 
@@ -12,9 +13,17 @@ export class HeaderComponent implements OnInit {
 
   public usuario: any;
 
-  constructor(private authenticatorService: AuthenticatorService) {}
+  constructor(
+    public authenticatorService: AuthenticatorService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.usuario = this.authenticatorService.obterUsuario();
+  }
+
+  deslogar() {
+    this.authenticatorService.limparDados();
+    this.router.navigate(['/login']);
   }
 }

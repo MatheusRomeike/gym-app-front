@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class AuthenticatorService {
     return sessionStorage.getItem('token');
   }
 
-  public limparToken() {
+  private limparToken() {
     sessionStorage.removeItem('token');
   }
 
@@ -24,7 +25,35 @@ export class AuthenticatorService {
     return sessionStorage.getItem('usuario');
   }
 
-  public limparUsuario() {
+  private limparUsuario() {
     sessionStorage.removeItem('usuario');
+  }
+
+  public limparDados() {
+    this.limparToken();
+    this.limparUsuario();
+  }
+
+  public autenticado() {
+    if (this.obterToken() === null || this.obterToken() === '') {
+      return false;
+    }
+
+    const jwt = this.obterToken() || '';
+
+    const payload = JSON.parse(atob(jwt.split('.')[1]));
+
+    // Get the expiration timestamp from the payload
+    const exp = payload.exp;
+
+    // Get the current time
+    const now = Math.floor(Date.now() / 1000);
+
+    // Check if the token is expired
+    if (exp < now) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

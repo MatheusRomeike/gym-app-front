@@ -19,6 +19,7 @@ import {
   provideNgxMask,
 } from 'ngx-mask';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
 
@@ -45,7 +46,6 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     MatProgressSpinnerModule,
     NgxMaskDirective,
     NgxMaskPipe,
