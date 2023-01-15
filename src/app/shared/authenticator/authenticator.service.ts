@@ -32,10 +32,4 @@ export class AuthenticatorService {
   public deslogou() {
     this.logadoSubject.next(false);
   }
-
-  public estaLogado() {
-    return this.httpClient.get<boolean>(
-      `${ResourceBase.Base}${ResourceLogin.VerificarLogin}`
-    );
-  }
 }

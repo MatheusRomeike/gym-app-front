@@ -1,11 +1,24 @@
-<nav class="d-flex justify-content-between" style="background-color: purple; height: 100%;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
 
-  <div class="my-auto" style="font-size: 32px;">
-    Empresa Empresa
+    <div class="float-start">
+
+      <fa-icon [icon]="faBars" style="color: white; font-size: 20px; cursor: pointer;"></fa-icon>
+
+      <a class="navbar-brand" style="margin-left: 20px;">Empresa teste</a>
+
+    </div>
+
+    <div class="float-end">
+
+      <div class="nav-item dropstart">
+        <button class="btn btn-outline-light dropdown-toggle" type="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">{{usuario}}</button>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="#">Sair</a></li>
+        </ul>
+      </div>
+
+    </div>
+
   </div>
-
-  <div class="my-auto" style="font-size: 32px;"> 
-    Sair
-  </div>
-
 </nav>

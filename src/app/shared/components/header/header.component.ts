@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  public faBars = faBars;
 
-  ngOnInit() {}
+  public usuario: any;
+
+  ngOnInit() {
+    this.usuario = this.obterNome();
+  }
+
+  public obterNome() {
+    return sessionStorage.getItem('usuario');
+  }
 }
