@@ -1,18 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { ResourceBase, ResourceLogin } from 'src/app/shared/const-api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticatorService {
-  private logadoSubject = new BehaviorSubject<boolean>(false);
-
-  public logado$: Observable<boolean> = this.logadoSubject.asObservable();
-
-  constructor(private httpClient: HttpClient) {}
-
   public definirToken(token: string) {
     sessionStorage.setItem('token', token);
   }
@@ -25,11 +16,15 @@ export class AuthenticatorService {
     sessionStorage.removeItem('token');
   }
 
-  public logou() {
-    this.logadoSubject.next(true);
+  public definirUsuario(usuario: string) {
+    sessionStorage.setItem('usuario', usuario);
   }
 
-  public deslogou() {
-    this.logadoSubject.next(false);
+  public obterUsuario() {
+    return sessionStorage.getItem('usuario');
+  }
+
+  public limparUsuario() {
+    sessionStorage.removeItem('usuario');
   }
 }

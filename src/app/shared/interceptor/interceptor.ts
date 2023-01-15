@@ -44,7 +44,6 @@ export class Interceptor implements HttpInterceptor {
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status == 401) {
-          this.authenticatorService.deslogou();
           this.authenticatorService.limparToken();
         }
         return throwError(() => error);

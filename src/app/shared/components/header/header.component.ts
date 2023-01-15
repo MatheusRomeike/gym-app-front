@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { AuthenticatorService } from '../../authenticator/authenticator.service';
 
 @Component({
   selector: 'app-header',
@@ -11,11 +12,9 @@ export class HeaderComponent implements OnInit {
 
   public usuario: any;
 
-  ngOnInit() {
-    this.usuario = this.obterNome();
-  }
+  constructor(private authenticatorService: AuthenticatorService) {}
 
-  public obterNome() {
-    return sessionStorage.getItem('usuario');
+  ngOnInit() {
+    this.usuario = this.authenticatorService.obterUsuario();
   }
 }

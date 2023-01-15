@@ -63,11 +63,10 @@ export class LoginComponent {
     this.loadingService.show();
     this.loginService.logar(dadosLogin).subscribe({
       next: (n) => {
-        sessionStorage.setItem('usuario', dadosLogin.Usuario);
+        this.authenticatorService.definirUsuario(dadosLogin.Usuario);
         this.authenticatorService.definirToken(n.data);
         this.alertService.success('Login realizado!');
         this.loadingService.hide();
-        this.authenticatorService.logou();
       },
       error: (e) => {
         this.alertService.error(e.error.data);
