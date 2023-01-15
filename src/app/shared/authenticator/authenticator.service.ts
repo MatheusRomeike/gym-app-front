@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ResourceBase, ResourceLogin } from 'src/app/const-api';
+import { ResourceBase, ResourceLogin } from 'src/app/shared/const-api';
 
 @Injectable({
   providedIn: 'root',

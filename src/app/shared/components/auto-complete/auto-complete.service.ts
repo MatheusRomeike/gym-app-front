@@ -4,7 +4,7 @@ import {
   ResourceAutoComplete,
   ResourceBase,
   ResourceLogin,
-} from 'src/app/const-api';
+} from 'src/app/shared/const-api';
 import { AutoComplete } from '../../enums/auto-complete.enum';
 import { AutoCompleteModel } from '../../models/AutoCompleteModel';
 

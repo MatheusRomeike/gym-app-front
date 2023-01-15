@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginModel } from '../models/LoginModel';
-import { Observable } from 'rxjs';
-import { ResourceBase, ResourceLogin } from 'src/app/const-api';
+import { LoginModel } from './shared/models/LoginModel';
+import { ResourceBase, ResourceLogin } from 'src/app/shared/const-api';
 
 @Injectable({
   providedIn: 'root',
