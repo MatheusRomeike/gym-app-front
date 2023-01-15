@@ -35,7 +35,12 @@ export class AuthenticatorService {
   }
 
   public autenticado() {
-    if (this.obterToken() === null || this.obterToken() === '') {
+    if (
+      this.obterToken() === null ||
+      this.obterToken() === '' ||
+      this.obterUsuario() === null ||
+      this.obterUsuario() === ''
+    ) {
       return false;
     }
 

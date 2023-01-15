@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { AuthenticatorService } from '../../authenticator/authenticator.service';
@@ -8,7 +8,7 @@ import { AuthenticatorService } from '../../authenticator/authenticator.service'
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   public faBars = faBars;
 
   public usuario: any;
@@ -17,10 +17,6 @@ export class HeaderComponent implements OnInit {
     public authenticatorService: AuthenticatorService,
     private router: Router
   ) {}
-
-  ngOnInit() {
-    this.usuario = this.authenticatorService.obterUsuario();
-  }
 
   deslogar() {
     this.authenticatorService.limparDados();
