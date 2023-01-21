@@ -26,7 +26,6 @@ export class InputFieldComponent implements ControlValueAccessor {
   @Input() prefix?: any;
   @Input() formControlName = '';
   @Input() form!: FormGroup;
-  @Input() maxLength?: number;
   @Input() required = false;
   @Input() optionId: any = null;
   @Input() option: any = null;
@@ -37,6 +36,11 @@ export class InputFieldComponent implements ControlValueAccessor {
   private innerValue: any;
 
   constructor() {}
+
+  bindAutoComplete(event: any) {
+    this.form.get(this.formControlName)?.setValue(event.text);
+    this.form.get(`${this.formControlName}Id`)?.setValue(event.id);
+  }
 
   closeAutoComplete() {
     setTimeout(() => {

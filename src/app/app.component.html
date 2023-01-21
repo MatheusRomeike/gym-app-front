@@ -1,10 +1,9 @@
-<div style="height: 6%;">
-    <app-header></app-header>
+<div *ngIf="authenticator.autenticado()" style="height: 100%; width: 100%;">
+    <app-menu></app-menu>
 </div>
 
-<div style="height: 94%;">
+<div style="position: absolute; width: 80%; height: 82%; top: 13%; left: 17.5%; background-color: white; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);">
     <router-outlet></router-outlet>
 </div>
 
 <app-loading></app-loading>
-<app-alert></app-alert>

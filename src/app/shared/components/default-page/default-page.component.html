@@ -1,0 +1,10 @@
+<div class="d-flex flex-column" style="height: 100%;">
+  <div class="d-flex align-items-center" style="width: 100%; height: 6%; background-color: #F8F9FC;">
+    <a routerLink="/" routerLinkActive="active">Home</a>
+    <div class="d-flex align-items-center" *ngFor="let item of items">
+      <p style="margin-left: 10px; margin-right: 10px;">/</p>
+      <a [routerLink]="item.link" routerLinkActive="active">{{item.name}}</a>
+    </div>
+  </div>
+  <div style="height: 94%;"></div>
+</div>

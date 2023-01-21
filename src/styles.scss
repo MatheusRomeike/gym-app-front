@@ -1,6 +1,10 @@
 html, body, app-root { height: 100%; width: 100%; }
 body { margin: 0; font-family: 'Poppins', sans-serif; }
 
+* {
+    font-family: 'Inter', sans-serif;
+}
+
 *::-webkit-scrollbar-track {
     background: #ffffff;
 }
@@ -14,3 +18,20 @@ body { margin: 0; font-family: 'Poppins', sans-serif; }
 *::-webkit-scrollbar {
     width: 12px;
 }
+
+$theme-colors: (
+    "primary":          #7749F8,
+    "primary-dark":     #5227CC,
+    "primary-light":    #ebe5fc,
+    "secondary":        #6C757D,
+    "secondary-dark":   #54595e,
+    "secondary-light":  #abb5be,
+    "success":          #6a9429,
+    "info":             #0DCAF0,
+    "warning":          #FFC107,
+    "danger":           #ff0000,
+    "light":            #F8F9FA,
+    "dark":             #212529,
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";

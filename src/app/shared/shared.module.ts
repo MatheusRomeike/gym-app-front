@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
 import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
 import { DataFormComponent } from './components/data-form/data-form.component';
-import { HeaderComponent } from './components/header/header.component';
 import { InputFieldComponent } from './components/input-field/input-field.component';
+import { MenuComponent } from './components/menu/menu.component';
 import { LoadingComponent } from './components/loading/loading.component';
-import { AlertComponent } from './components/alert/alert.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   IConfig,
@@ -19,7 +17,9 @@ import {
   provideNgxMask,
 } from 'ngx-mask';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
+import { ToastNoAnimationModule } from 'ngx-toastr';
+import { RouterModule } from '@angular/router';
+import { DefaultPageComponent } from './components/default-page/default-page.component';
 
 export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
 
@@ -28,18 +28,20 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
   declarations: [
     AutoCompleteComponent,
     DataFormComponent,
-    HeaderComponent,
+    MenuComponent,
     InputFieldComponent,
     LoadingComponent,
-    AlertComponent,
+    DefaultPageComponent,
   ],
   exports: [
     AutoCompleteComponent,
     DataFormComponent,
-    HeaderComponent,
+    MenuComponent,
     InputFieldComponent,
     LoadingComponent,
-    AlertComponent,
+    ToastNoAnimationModule,
+    RouterModule,
+    DefaultPageComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +54,8 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     FontAwesomeModule,
     MatExpansionModule,
     MatProgressBarModule,
+    ToastNoAnimationModule.forRoot(),
+    RouterModule,
   ],
 })
 export class SharedModule {}

@@ -1,0 +1,71 @@
+<div class="d-flex" style="height: 100%; width: 100%; background-color: #F3F4F7;">
+
+  <div class="d-flex flex-column sidebar h-100 bg-primary align-items-center">
+
+    <div class="title">
+      <h5 class="fw-bold mx-auto my-auto" style="color: white;">{{nomeEmpresa}}</h5>
+    </div>
+
+    <div class="home">
+      <a routerLink="/home" routerLinkActive="active" class="d-flex">
+        <fa-icon [icon]="faHome" class="my-auto" style="color: white;"></fa-icon>
+        <h5 class="fw-semibold my-auto" style="margin-left: 10px">Home</h5>
+      </a>
+    </div>
+
+    <mat-accordion #matAccordion style="width: 90%; height: 89%;">
+      <mat-expansion-panel class="nodes" style="background: none;" *ngFor="let item of nodes">
+        <mat-expansion-panel-header class="focus" style="padding: 0; padding-right: 2px; margin-top: 10px; margin-bottom: 10px;">
+          <mat-panel-title class="semiBold">
+            <!--Titulo-->
+            <fa-icon [icon]="item.icon" style="margin-right: 10px"></fa-icon>
+            {{item.name}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-accordion>
+          <mat-expansion-panel style="background: rgba(0, 0, 0, 0.15);" *ngFor="let categoria of item.categoria">
+            <mat-expansion-panel-header class="focus" style="margin-top: 10px; margin-bottom: 10px;">
+              <mat-panel-title class="semiBold">
+                <!--Categoria-->
+                {{categoria.name}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+    
+            <div class="d-flex flex-column align-items-center focus" style="cursor: pointer; background: rgba(0, 0, 0, 0.15);" *ngFor="let subCategoria of categoria.subCategoria" [routerLink]="item.route + categoria.route + subCategoria.route" routerLinkActive="active">
+              <p class="semiBold" style="margin-top: 10px; margin-bottom: 10px;"> 
+                <!--SubCategoria (clicavel)-->
+                {{subCategoria.name}} 
+              </p>
+            </div>
+    
+    
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </div>
+
+  <div class="header bg-white">
+
+    <div class="left" style="width: 25%; margin-left: 25px">
+      <div class="input-group" style="padding: 0;">
+        <input type="text" class="form-control" placeholder="Pesquise por..." style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+        <div class="input-group-append">
+          <span class="input-group-text bg-primary" style="border-radius: 0px 4px 4px 0px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"><fa-icon [icon]="faSearch" style="color: white;"></fa-icon></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="right d-flex align-items-center">
+      <fa-icon [icon]="faBell" style="color: #D9D9D9; font-size: 35px; padding-right: 25px; border-right: 1px solid #D1D3E2;"></fa-icon>
+      <p class="semiBold" style="margin: 0; margin-left: 25px; color: #D1D3E2; font-size: 16px;">{{authenticatorService.obterUsuario()}}</p>
+      <span class="dot d-flex justify-content-center align-items-center">
+        <fa-icon [icon]="faUser" style="font-size: 30px; color: #686977"></fa-icon>
+      </span>
+    </div>
+
+  </div>
+
+</div>

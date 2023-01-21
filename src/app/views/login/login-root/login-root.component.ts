@@ -1,12 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { DataFormComponent } from 'src/app/shared/components/data-form/data-form.component';
 import { LoadingService } from 'src/app/shared/components/loading/loading.service';
-import { AlertService } from 'src/app/shared/components/alert/alert.service';
-import { AutoComplete } from 'src/app/shared/enums/auto-complete.enum';
 import { AuthenticatorService } from 'src/app/shared/authenticator/authenticator.service';
 import { LoginModel } from '../shared/models/LoginModel';
 import { LoginService } from '../shared/models/login.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -21,17 +20,14 @@ export class LoginRootComponent {
   public lista = [
     {
       placeholder: 'Informe o usuário',
-      maxLength: 50,
       required: true,
       formControlName: 'usuario',
       type: 'text',
       label: 'Usuário',
       class: 'col-9 mx-auto',
-      option: AutoComplete.Login,
     },
     {
       placeholder: 'Informe a senha',
-      maxLength: 50,
       required: true,
       formControlName: 'senha',
       type: 'password',
@@ -43,14 +39,14 @@ export class LoginRootComponent {
   constructor(
     public loginService: LoginService,
     private authenticatorService: AuthenticatorService,
-    private alertService: AlertService,
+    private toastr: ToastrService,
     private loadingService: LoadingService,
     private router: Router
   ) {}
 
   submitLoginForm() {
     if (!this.dynamicForm.form.valid) {
-      this.alertService.error('Preencha todos os campos obrigatórios!');
+      this.toastr.error('Preencha todos os campos');
       return;
     }
 
@@ -67,12 +63,12 @@ export class LoginRootComponent {
       next: (n) => {
         this.authenticatorService.definirUsuario(dadosLogin.Usuario);
         this.authenticatorService.definirToken(n.data);
-        this.alertService.success('Login realizado!');
+        this.toastr.success('Sucesso!', 'Login efetuado.');
         this.loadingService.hide();
         this.router.navigate(['/']);
       },
       error: (e) => {
-        this.alertService.error(e.error.data);
+        this.toastr.error(e.error.data);
         this.loadingService.hide();
       },
     });

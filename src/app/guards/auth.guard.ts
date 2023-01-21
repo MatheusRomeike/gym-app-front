@@ -2,16 +2,11 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
-  CanLoad,
-  Route,
   Router,
   RouterStateSnapshot,
-  UrlSegment,
-  UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 import { AuthenticatorService } from '../shared/authenticator/authenticator.service';
-import { AlertService } from '../shared/components/alert/alert.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +15,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private authenticatorService: AuthenticatorService,
     private router: Router,
-    private alertService: AlertService
+    private toastr: ToastrService
   ) {}
 
   canActivate(
@@ -35,9 +30,7 @@ export class AuthGuard implements CanActivate {
     if (this.authenticatorService.autenticado()) {
       return true;
     }
-    this.alertService.error(
-      'Você precisa estar logado para acessar essa página!'
-    );
+    this.toastr.error('Você precisa estar logado para acessar essa página!');
     this.router.navigate(['/login']);
     return false;
   }

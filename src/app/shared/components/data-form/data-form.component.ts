@@ -24,6 +24,8 @@ export class DataFormComponent implements OnInit {
         ? control.addValidators([Validators.maxLength(f.maxLength)])
         : null;
 
+      f.option ? this.form.addControl(`${f.formControlName}Id`, null) : null;
+
       this.form.addControl(f.formControlName, control);
     });
 
