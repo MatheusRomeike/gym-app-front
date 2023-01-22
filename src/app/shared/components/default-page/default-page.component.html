@@ -5,27 +5,29 @@
   </div>
 
   <div class="col-10 h-100">
-    <div style="height: 8%; margin-bottom: 3%;">
+    <div style="height: 8%;">
       <app-header></app-header>
     </div>
 
-    <div style="width: 95%; height: 82%; margin-left: 2.5%; box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);">
+    <div class="d-flex justify-content-center align-items-center" style="height: 92%;">
+      <div style="width: 95%; height: 88%; box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.25);">
 
-      <div class="col-12" style="height: 8%; background-color: #f8f9fc;">
-        <div class="d-flex align-items-center" style="height: 100%; margin-left: 2.5%;">
-          <a class="semiBold activeRoute" routerLink="/" routerLinkActive="active">Home</a>
-          <span class="semiBold" style="margin: 0 10px; color: #6c757d;">/</span>
-          <a [ngClass]="item.link != null ? 'activeRoute' : 'deactiveRoute'" class="semiBold" [routerLink]="item?.link" routerLinkActive="active" *ngFor="let item of breadcrumb">{{item.name}}</a>
+        <div class="col-12" style="height: 8%; background-color: #f8f9fc;">
+          <div class="d-flex align-items-center" style="height: 100%; margin-left: 2.5%;">
+            <a class="semiBold activeRoute" routerLink="/" routerLinkActive="active">Home</a>
+            <span class="semiBold" style="margin: 0 10px; color: #6c757d;">/</span>
+            <a [ngClass]="item.link != null ? 'activeRoute' : 'deactiveRoute'" class="semiBold" [routerLink]="item?.link" routerLinkActive="active" *ngFor="let item of breadcrumb">{{item.name}}</a>
+          </div>
+        </div>
+
+        <div class="col-12 bg-white" style="height: 92%; ">
+          <div style="height: 100%; overflow-y: scroll; overflow-x: hidden;">
+            <ng-content  select="[content]"></ng-content>
+          </div>
         </div>
       </div>
-
-      <div class="col-12 bg-white" style="height: 92%; ">
-        <div style="height: 100%; overflow-y: scroll; overflow-x: hidden;">
-          <ng-content  select="[content]"></ng-content>
-        </div>
-      </div>
+      
     </div>
-    
   </div>
 
 </div>

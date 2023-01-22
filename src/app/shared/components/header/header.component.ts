@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faBell, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { ToastrService } from 'ngx-toastr';
 import { AuthenticatorService } from '../../authenticator/authenticator.service';
 
 @Component({
@@ -14,7 +16,17 @@ export class HeaderComponent implements OnInit {
 
   nomeEmpresa = 'Empresa teste';
 
-  constructor(public authenticatorService: AuthenticatorService) {}
+  constructor(
+    public authenticatorService: AuthenticatorService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
+
+  deslogar() {
+    this.authenticatorService.limparDados();
+    this.router.navigate(['/login']);
+    this.toastr.success('Deslogado com sucesso!');
+  }
 }

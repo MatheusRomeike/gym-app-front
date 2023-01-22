@@ -5,27 +5,27 @@ import { Injectable } from '@angular/core';
 })
 export class AuthenticatorService {
   public definirToken(token: string) {
-    sessionStorage.setItem('token', token);
+    localStorage.setItem('token', token);
   }
 
   public obterToken() {
-    return sessionStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 
   private limparToken() {
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
   }
 
   public definirUsuario(usuario: string) {
-    sessionStorage.setItem('usuario', usuario);
+    localStorage.setItem('usuario', usuario);
   }
 
   public obterUsuario() {
-    return sessionStorage.getItem('usuario');
+    return localStorage.getItem('usuario');
   }
 
   private limparUsuario() {
-    sessionStorage.removeItem('usuario');
+    localStorage.removeItem('usuario');
   }
 
   public limparDados() {
