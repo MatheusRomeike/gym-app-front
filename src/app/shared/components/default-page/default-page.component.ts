@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./default-page.component.scss'],
 })
 export class DefaultPageComponent implements OnInit {
-  @Input() items: any[] = [];
+  @Input() breadcrumb: any[] = [];
 
   constructor() {}
 

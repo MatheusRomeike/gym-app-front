@@ -1,27 +1,18 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
-import {
-  faBell,
-  faUser,
-  faSearch,
-  faHome,
-  faAddressCard,
-} from '@fortawesome/free-solid-svg-icons';
+import { faHome, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 import { AuthenticatorService } from '../../authenticator/authenticator.service';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss'],
+  selector: 'app-sidenav',
+  templateUrl: './sidenav.component.html',
+  styleUrls: ['./sidenav.component.scss'],
 })
-export class MenuComponent {
+export class SidenavComponent {
   @ViewChild('matAccordion') matAccordion!: MatAccordion;
 
   constructor(public authenticatorService: AuthenticatorService) {}
 
-  faBell = faBell;
-  faUser = faUser;
-  faSearch = faSearch;
   faHome = faHome;
 
   nomeEmpresa = 'Empresa teste';

@@ -7,5 +7,5 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./home-root.component.scss'],
 })
 export class HomeRootComponent {
-  items = [{ name: 'Home', link: '/' }];
+  breadcrumb = [{ name: 'Home' }];
 }
