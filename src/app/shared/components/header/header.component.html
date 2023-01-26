@@ -1,22 +1,24 @@
-<div class="header bg-white">
+<div class="bg-white">
+  <div class="row col-12 justify-content-between">
 
-  <div class="left" style="width: 25%; margin-left: 25px;">
-    <div class="input-group" style="padding: 0;">
-      <input type="text" class="form-control" placeholder="Pesquise por..." style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
-      <div class="input-group-append">
-        <span class="input-group-text bg-primary" style="border-radius: 0px 4px 4px 0px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"><fa-icon [icon]="faSearch" style="color: white;"></fa-icon></span>
+    <div class="col-6 col-sm-5 col-md-3 my-2 py-1">
+      <div class="input-group" style="margin-left: 12px;">
+        <input type="text" class="form-control" placeholder="Pesquise por..." style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+        <div class="input-group-append">
+          <span class="input-group-text bg-primary" style="border-radius: 0px 4px 4px 0px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"><fa-icon [icon]="faSearch" style="color: white;"></fa-icon></span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="right d-flex align-items-center">
-    <fa-icon [icon]="faBell" style="color: #D9D9D9; font-size: 25px; padding-right: 25px; border-right: 2px solid #D1D3E2; margin-right: 25px;"></fa-icon>
-    <div class="nav-item dropstart" style="margin-right: 25px;">
-        <button class="btn btn-outline-primary dropdown-toggle semiBold" type="button" style="border-width: 2px ;border-color: #D9D9D9; color: gray;" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">{{this.authenticatorService.obterUsuario()}}</button>
+    <div class="row col-6 justify-content-end my-2 py-1">
+      <fa-icon [icon]="faBell" class="col-3 col-sm-2 col-md-2 col-xl-1" style="color: #D9D9D9; font-size: 25px;"></fa-icon>
+      <div class="nav-item dropstart col-9 col-sm-5 col-md-4 col-xl-3 col-xxl-2">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" style="border-width: 2px ;border-color: #D9D9D9; color: gray;" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">{{this.authenticatorService.obterUsuario()}}</button>
         <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" (click)="deslogar()">Sair</a></li>
         </ul>
       </div>
+    </div>
+      
   </div>
-
 </div>
