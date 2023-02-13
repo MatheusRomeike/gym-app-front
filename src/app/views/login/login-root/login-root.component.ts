@@ -17,7 +17,7 @@ export class LoginRootComponent {
 
   public valid = false;
 
-  public lista = [
+  public form = [
     {
       placeholder: 'Informe o usuário',
       required: true,

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticatorService } from './shared/authenticator/authenticator.service';
 
 const routes: Routes = [
   {
@@ -12,6 +11,13 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./views/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'cadastros',
+    loadChildren: () =>
+      import('./views/cadastros/cadastros.module').then(
+        (m) => m.CadastrosModule
+      ),
   },
 ];
 

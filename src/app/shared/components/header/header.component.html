@@ -1,17 +1,17 @@
-<div class="bg-white">
+<div class="bg-white" style="box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.04);">
   <div class="row col-12 justify-content-between">
 
     <div class="col-6 col-sm-5 col-md-3 my-2 py-1">
       <div class="input-group" style="margin-left: 12px;">
-        <input type="text" class="form-control" placeholder="Pesquise por..." style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+        <input type="text" class="form-control" placeholder="Pesquise por...">
         <div class="input-group-append">
-          <span class="input-group-text bg-primary" style="border-radius: 0px 4px 4px 0px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"><fa-icon [icon]="faSearch" style="color: white;"></fa-icon></span>
+          <span class="input-group-text bg-primary border-primary" style="border-radius: 0px 4px 4px 0px; cursor: pointer;"><fa-icon [icon]="faSearch" style="color: white;"></fa-icon></span>
         </div>
       </div>
     </div>
 
     <div class="row col-6 justify-content-end my-2 py-1">
-      <fa-icon [icon]="faBell" class="col-3 col-sm-2 col-md-2 col-xl-1" style="color: #D9D9D9; font-size: 25px;"></fa-icon>
+      <fa-icon [icon]="faBell" class="col-3 col-sm-2 col-md-2 col-xl-1" style="color: #D9D9D9; font-size: 26px; cursor: pointer;"></fa-icon>
       <div class="nav-item dropstart col-9 col-sm-5 col-md-4 col-xl-3 col-xxl-2">
         <button class="btn btn-outline-primary dropdown-toggle" type="button" style="border-width: 2px ;border-color: #D9D9D9; color: gray;" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">{{this.authenticatorService.obterUsuario()}}</button>
         <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">

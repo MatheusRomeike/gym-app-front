@@ -4,9 +4,9 @@
 
       <h1 class="text-center mt-5" style="font-size: 32px;">Bem Vindo!</h1>
 
-      <app-data-form (valid)="valid = $event" #dynamicForm [fields]="lista"></app-data-form>
+      <app-data-form (valid)="valid = $event" #dynamicForm [fields]="form"></app-data-form>
 
-      <button type="button" (click)="submitLoginForm()" [disabled]="!valid" class="btn btn-secondary col-2 mb-5 mx-auto" style="background-color: #8d448b;">Entrar</button>
+      <button type="submit" (click)="submitLoginForm()" [disabled]="!valid" class="btn btn-secondary col-2 mb-5 mx-auto" style="background-color: #8d448b;">Entrar</button>
 
   </div>
 

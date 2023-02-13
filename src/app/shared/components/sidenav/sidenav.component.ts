@@ -21,7 +21,7 @@ export class SidenavComponent {
     {
       name: 'Cadastros',
       icon: faAddressCard,
-      route: '/cadastro',
+      route: '/cadastros',
       categoria: [
         {
           name: 'Pessoa',

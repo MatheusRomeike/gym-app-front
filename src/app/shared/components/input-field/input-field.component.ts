@@ -29,6 +29,7 @@ export class InputFieldComponent implements ControlValueAccessor {
   @Input() required = false;
   @Input() optionId: any = null;
   @Input() option: any = null;
+  @Input() selectOptions: any[] = [];
 
   public activeAutoComplete = false;
   public valorAutoComplete: any = null;
