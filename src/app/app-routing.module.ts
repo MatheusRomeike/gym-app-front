@@ -5,19 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./views/home/home.module').then((m) => m.HomeModule),
-  },
-  {
-    path: 'login',
-    loadChildren: () =>
-      import('./views/login/login.module').then((m) => m.LoginModule),
-  },
-  {
-    path: 'cadastros',
-    loadChildren: () =>
-      import('./views/cadastros/cadastros.module').then(
-        (m) => m.CadastrosModule
-      ),
+      import('./views/home/inicio.module').then((m) => m.InicioModule),
   },
 ];
 

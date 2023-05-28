@@ -5,8 +5,8 @@ import {
   ResourceBase,
   ResourceLogin,
 } from 'src/app/shared/const-api';
-import { AutoComplete } from '../../enums/auto-complete.enum';
 import { AutoCompleteModel } from '../../models/AutoCompleteModel';
+import { AutoComplete } from './auto-complete.enum';
 
 @Injectable({
   providedIn: 'root',
