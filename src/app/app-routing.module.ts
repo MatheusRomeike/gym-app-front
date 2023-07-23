@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./views/home/inicio.module').then((m) => m.InicioModule),
+      import('./views/home/home.module').then((m) => m.HomeModule),
   },
 ];
 

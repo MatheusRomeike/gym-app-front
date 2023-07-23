@@ -17,6 +17,8 @@ import { CommonModule } from '@angular/common';
 import { ToastNoAnimationModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './components/header/header/header.component';
+import { DefaultPageLayoutComponent } from './pages/default-page-layout/default-page-layout/default-page-layout.component';
 
 export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
 
@@ -25,13 +27,16 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
   declarations: [
     AutoCompleteComponent,
     LoadingComponent,
+    HeaderComponent,
+    DefaultPageLayoutComponent,
   ],
   exports: [
     AutoCompleteComponent,
     LoadingComponent,
     ToastNoAnimationModule,
     RouterModule,
-    NgbModule
+    NgbModule,
+    DefaultPageLayoutComponent,
   ],
   imports: [
     CommonModule,
@@ -46,7 +51,7 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     MatProgressBarModule,
     ToastNoAnimationModule.forRoot(),
     RouterModule,
-    NgbModule
+    NgbModule,
   ],
 })
 export class SharedModule {}

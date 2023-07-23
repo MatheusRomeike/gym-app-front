@@ -1,37 +1,45 @@
-html, body, app-root { height: 100%; width:100%; }
-body { margin: 0; font-family: 'Poppins', sans-serif; }
+html,
+body,
+app-root {
+  height: 100%;
+  width: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
 
 * {
-    font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 *::-webkit-scrollbar-track {
-    background: #ffffff;
+  background: #ffffff;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: rgba(128, 128, 128, 0.750);
-    border-radius: 12px;
-    border: 3px solid #ffffff;
+  background-color: rgba(128, 128, 128, 0.75);
+  border-radius: 12px;
+  border: 3px solid #ffffff;
 }
 
 *::-webkit-scrollbar {
-    width: 12px;
+  width: 12px;
 }
 
 $theme-colors: (
-    "primary":          #7749F8,
-    "primary-dark":     #5227CC,
-    "primary-light":    #ebe5fc,
-    "secondary":        #6C757D,
-    "secondary-dark":   #54595e,
-    "secondary-light":  #abb5be,
-    "success":          #6a9429,
-    "info":             #0DCAF0,
-    "warning":          #FFC107,
-    "danger":           #ff0000,
-    "light":            #F8F9FA,
-    "dark":             #212529,
+  "primary": #7749f8,
+  "primary-dark": #5227cc,
+  "primary-light": #ebe5fc,
+  "secondary": #6c757d,
+  "secondary-dark": #54595e,
+  "secondary-light": #abb5be,
+  "success": #6a9429,
+  "info": #0dcaf0,
+  "warning": #ffc107,
+  "danger": #ff0000,
+  "light": #f8f9fa,
+  "dark": #212529,
 );
 
 @import "node_modules/bootstrap/scss/bootstrap";
