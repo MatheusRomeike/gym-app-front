@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { InicioComponent } from './inicio/iniciocomponent';
+import { HomeRootComponent } from './home-root/home-root.component';
 
-const routes: Routes = [
-  { path: '', component: InicioComponent },
-];
+const routes: Routes = [{ path: '', component: HomeRootComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class InicioRoutingModule {}
+export class HomeRoutingModule {}

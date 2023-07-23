@@ -1,0 +1,27 @@
+.imageContainer {
+  background: url("../../../../assets/images/background.webp") center center
+    no-repeat;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.texto p {
+  font-size: 2.5rem;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+  letter-spacing: 0.1em;
+}
+
+.botao {
+  height: 80px;
+  padding: 20px;
+  font-size: 16px;
+  opacity: 0.65;
+}
